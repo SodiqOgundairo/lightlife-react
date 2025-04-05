@@ -1,2 +1,2 @@
-# lighlife-react
+# lightlife-react
 Lightlifechurch.com  website revamped to reactjs
