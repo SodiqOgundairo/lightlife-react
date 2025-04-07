@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-gold: rgb(214 164 50);
+  --Color-gold-hi: rgb(151 105 2);
+  --color-gold-low: rgb(255 201 79);
+  --color-purple: rgb(86 34 80);
+  --color-purple-hi: rgb(74 16 68);
+  --color-purple-mid: rgb(89 15 183);
+  --color-gray-1: rgb(196 196 196);
+  --color-gray-2: rgb(116 116 116);
+  --color-gray-3: rgb(72 72 72);
+  --color-dark: rgb(45 0 41);
+  --color-light: rgb(250 250 250);
+  --color-error: rgb(255 0 0);
+  --color-success: rgb(0 128 0);
+  --color-warning: rgb(255 139 0);
+  --color-darkPurple: rgb(45 0 41);
+  --color-gold-gradient: 293deg, #976902 7.37%, #FDD069 94.42%;
+  --color-purple-gradient: linear-gradient(293deg, #3F0539 7.37%, #BF31AF 94.42%);
+  --color-gold-purple: linear-gradient(120deg, #D6A432 -8.94%, #562250 93.28%);
+  --color-gold-purple-2: linear-gradient(267deg, #590FB7 17.5%, #EFB83B 117.28%);
+}
+
+
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.purple-gradient {
+  background: linear-gradient(293deg, #3F0539 7.37%, #BF31AF 94.42%);
+  -webkit-background-clip: text; /* For Safari/Chrome */
+  background-clip: text;
+  color: transparent; /* Makes the text show the gradient */
+}
+
+.gold-gradient {
+  background: linear-gradient(293deg, #976902 7.37%, #FDD069 94.42%);
+  -webkit-background-clip: text; /* For Safari/Chrome */
+  background-clip: text;
+  color: transparent; /* Makes the text show the gradient */
+}
+
+.gold-purple {
+  background: linear-gradient(293deg, #976902 7.37%, #FDD069 94.42%);
+  -webkit-background-clip: text; /* For Safari/Chrome */
+  background-clip: text;
+  color: transparent; /* Makes the text show the gradient */
+}
+
+/* BUTTONS */
+.btn-pry {
+  border-radius: 50px;
+  background: linear-gradient(293deg, #976902 7.37%, #fdd069 94.42%);
+  padding: 10px 30px;
+  font-weight: 500;
+  height: 47px;
+}
+
+.btn-pry:hover {
+  background: linear-gradient(93deg, #976902 7.37%, #fdd069 94.42%);
+  box-shadow: 0px 8px 16px 0px #56225085;
+  padding: 12px 32px;
+  height: auto;
+}
+
+.btn-accent {
+  border-radius: 50px;
+  color: #fafafa;
+  background: linear-gradient(120deg, #D6A432 -8.94%, #562250 93.28%);
+  padding: 10px 30px;
+  font-weight: 500;
+  height: 47px;
+}
+
+.btn-accent:hover {
+  background: linear-gradient(240deg,  #D6A432 -8.94%, #562250 93.28%);
+  box-shadow: 0px 8px 16px 0px #56225085;
+  padding: 12px 32px;
+  height: auto;
+}
+
+.btn-outline {
+  border-radius: 50px;
+  border: 1.167px solid var(--Colors-Border-border-purple, #562250);
+  color: #562250;
+  background: #fafafa;
+  padding: 10px 30px;
+  font-weight: 500;
+  height: 47px;
+}
+
+.btn-outline:hover {
+  background-color:  #562250;
+  color: #fafafa;
+  box-shadow: 0px 8px 16px 0px #56225085;
+  padding: 12px 32px;
+  height: auto;
+}
+
+
+/* button:focus,
+button:focus-visible {
+
+} */
+
+/* BUTTONS ENDS */
+
+
+/* input field */
+.input
+/* input field ends */
+
+/* SCROLL BAR */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(200, 200, 200, 1);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 6px rgba(90, 90, 90, 0.7);
+  border-radius: 15px;
+  background-color: #fff;
+}
+
+/* SCROLL BAR ENDS*/
+
+
+
+
+/* custom CSS */
+.heroBg {
+  background-image: url('../img/home-hero.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* opacity: .6; */
+}
