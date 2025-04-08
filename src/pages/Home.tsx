@@ -31,12 +31,12 @@ const Home = () => {
 
       <div className="px-2 md:px-8 lg:px-36 py-10 gap-4 md:gap-7 md:py-20 justify-end flex flex-col md:flex-row">
 
-        <div className="absolute right-0  hover:right-50 transition-all duration-900 ease-linear z-0">
+        <div className="absolute right-0  hover:right-50 transition-all duration-900 animate-bounce ease-linear z-0">
           <img src={heartLine} alt="decor" />
         </div>
 
         <div className="rounded-lg w-full md:w-1/3 lg:1/5 overflow-hidden shadow-lg hover:scale-105 transform transition-all duration-300 ease-linear hover:shadow-xl">
-          <img src={visionImage} alt="visionImage" className="object-cover h-full w-full " />
+          <img src={visionImage} alt="visionImage" className="object-cover h-full w-full "/>
         </div>
 
         <div className="flex flex-col flex-1 lg:flex-row gap-4 md:gap-7 w-full md:w-2/3 md:mt-20 z-10">
