@@ -2,7 +2,7 @@ import montage from "./../assets/video/llcMontage.gif"
 const Home = () => {
   return (
     <main className=" flex flex-col">
-      <div className="md:px-36 px-2 flex flex-col gap-7 bg-no-repeat pt-4 md:pt-40 pb-20 items-center heroBg justify-center min-h-screen text-center">
+      <div className="md:px-36 px-2 flex flex-col gap-7 bg-no-repeat pt-4 md:pt-40 pb-4 md:pb-20 items-center heroBg justify-center min-h-screen text-center">
         <div className="flex flex-col gap-3">
           <p className=" text-darkPurple text-2xl md:text-3xl font-semibold">
             {" "}
