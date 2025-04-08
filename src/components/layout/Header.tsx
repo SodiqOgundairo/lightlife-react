@@ -29,7 +29,7 @@ const Header = () => {
     <header className="fixed w-full z-50 md:py-2 md:px-8 lg:px-36">
     <div className= 'transition-all duration-300 md:rounded-full shadow-sm bg-gray-1/20 backdrop-blur-lg px-4 py-2'>
     <div className="container mx-auto flex justify-between items-center relative"> 
-      {/* Logo */}
+
       <Link to="/" className="flex items-center">
         <img
           src={logo}
@@ -38,7 +38,6 @@ const Header = () => {
         />
       </Link>
   
-      {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center space-x-8">
         {navItems.map((item) => (
           <NavLink
@@ -57,7 +56,6 @@ const Header = () => {
         ))}
       </nav>
   
-      {/* CTA Button */}
       <Link to={"/support"}
         className="btn-pry hidden md:block "
         
@@ -65,7 +63,6 @@ const Header = () => {
         Support
       </Link >
   
-      {/* Mobile menu button */}
       <button
         className="md:hidden text-gray-2  focus:outline-none"
         onClick={() => setIsOpen(!isOpen)}
@@ -75,7 +72,6 @@ const Header = () => {
       </button>
     </div>
   
-    {/* Mobile menu */}
     {isOpen && (
       <div className="md:hidden" >
         <div className="px-4 pt-2 pb-4 space-y-2">

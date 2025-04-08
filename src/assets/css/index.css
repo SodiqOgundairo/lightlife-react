@@ -5,6 +5,7 @@
   --color-gold: rgb(214 164 50);
   --Color-gold-hi: rgb(151 105 2);
   --color-gold-low: rgb(255 201 79);
+  --color-purple-light: #BF31AF;
   --color-purple: rgb(86 34 80);
   --color-purple-hi: rgb(74 16 68);
   --color-purple-mid: rgb(89 15 183);
@@ -87,6 +88,7 @@ body {
   background: linear-gradient(293deg, #976902 7.37%, #fdd069 94.42%);
   padding: 10px 30px;
   font-weight: 500;
+  color: var(--color-darkPurple);
   height: 47px;
 }
 /*  transition-all duration-300 ease-linear hover:shadow-xl */
@@ -141,7 +143,25 @@ button:focus-visible {
 
 
 /* input field */
-.input
+.input-field {
+  border-radius: 40px;
+  background-color: var(--color-light);
+  padding: 10px 30px;
+  font-weight: 400;
+  height: 47px;
+  border: 1.167px solid var(--color-gray-2);
+  width: 100%;
+  flex: 1;
+  color: var(--Colors-Text-text-gray-3, #484848);
+  
+}
+
+.input-field:focus-visible {
+  background-color: var(--color-gray-1);
+  color: var(--color-darkPurple);
+  border:none;
+  outline-color: var(--color-purple-mid);
+}
 /* input field ends */
 
 /* SCROLL BAR */
