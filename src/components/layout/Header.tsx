@@ -45,7 +45,7 @@ const Header = () => {
             key={item.name}
             to={item.path}
             className={({ isActive }) =>
-              ` px-3 py-2 text-sm font-medium transition-colors hover:scale-105  duration-300 ease-linear hover:shadow-xl ${
+              ` px-3 py-2 text-sm font-medium transition-colors hover:scale-120  duration-300 ease-linear hover:text-purple-mid ${
                 isActive
                   ? "text-primary-600 border-b-2 border-purple-mid"
                   : "text-gray-2 hover:text-primary-500"
