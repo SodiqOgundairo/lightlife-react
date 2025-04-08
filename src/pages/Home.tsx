@@ -1,5 +1,6 @@
 import montage from "./../assets/video/llcMontage.gif"
 import visionImage from "./../assets/img/visionImage.png"
+import heartLine from "./../assets/img/heart-line.png"
 const Home = () => {
   return (
     <main className=" flex flex-col">
@@ -29,11 +30,16 @@ const Home = () => {
       </div>
 
       <div className="px-2 md:px-8 lg:px-36 py-10 gap-4 md:gap-7 md:py-20 justify-end flex flex-col md:flex-row">
+
+        <div className="absolute right-0  hover:right-50 transition-all duration-900 ease-linear z-0">
+          <img src={heartLine} alt="decor" />
+        </div>
+
         <div className="rounded-lg w-full md:w-1/3 lg:1/5 overflow-hidden shadow-lg hover:scale-105 transform transition-all duration-300 ease-linear hover:shadow-xl">
           <img src={visionImage} alt="visionImage" className="object-cover h-full w-full " />
         </div>
 
-        <div className="flex flex-col flex-1 lg:flex-row gap-4 md:gap-7 w-full md:w-2/3 md:mt-20">
+        <div className="flex flex-col flex-1 lg:flex-row gap-4 md:gap-7 w-full md:w-2/3 md:mt-20 z-10">
 
           <div className="rounded-lg shadow-lg shadow-darkPurple/20 bg-darkPurple p-5 text-light flex flex-col md:flex-1 gap-3 justify-end h-68 md:h-full hover:scale-105 hover:bg-transparent hover:border-2 border-darkPurple hover:text-darkPurple hover:shadow-xl transition-all duration-300 ease-linear">
             <p className="text-2xl md:text-4xl font-bold"> Our Purpose</p>
