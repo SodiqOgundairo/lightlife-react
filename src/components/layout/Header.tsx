@@ -34,7 +34,7 @@ const Header = () => {
         <img
           src={logo}
           alt="LLC Logo"
-          className="h-10"
+          className="h-10 hover:scale-200 transform transition-all duration-300 ease-linear"
         />
       </Link>
   
@@ -45,10 +45,10 @@ const Header = () => {
             key={item.name}
             to={item.path}
             className={({ isActive }) =>
-              `px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+              ` px-3 py-2 text-sm font-medium transition-colors hover:scale-105  duration-300 ease-linear hover:shadow-xl ${
                 isActive
-                  ? "text-primary-600 border-b-2 border-primary-600"
-                  : "text-gray-600 hover:text-primary-500"
+                  ? "text-primary-600 border-b-2 border-purple-mid"
+                  : "text-gray-2 hover:text-primary-500"
               }`
             }
           >
@@ -59,7 +59,7 @@ const Header = () => {
   
       {/* CTA Button */}
       <Link to={"/support"}
-        className="btn-pry hidden md:block"
+        className="btn-pry hidden md:block "
         
       >
         Support
@@ -67,7 +67,7 @@ const Header = () => {
   
       {/* Mobile menu button */}
       <button
-        className="md:hidden text-gray-700  focus:outline-none"
+        className="md:hidden text-gray-2  focus:outline-none"
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Toggle menu"
       >
@@ -87,7 +87,7 @@ const Header = () => {
                 `block px-3 py-2 rounded-md text-base font-medium ${
                   isActive
                     ? "bg-primary-50 text-primary-600"
-                    : "text-gray-600 hover:bg-gray-50"
+                    : "text-darkPurple hover:bg-gray-1"
                 }`
               }
               onClick={() => setIsOpen(false)}
@@ -95,9 +95,9 @@ const Header = () => {
               {item.name}
             </NavLink>
           ))}
-          {/* <Link to='/' className="btn-pry">
+          <Link to='/' className="btn-pry">
             Support
-          </Link> */}
+          </Link>
         </div>
       </div>
     )}

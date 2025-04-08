@@ -59,12 +59,12 @@ body {
   font-weight: 500;
   height: 47px;
 }
-
+/*  transition-all duration-300 ease-linear hover:shadow-xl */
 .btn-pry:hover {
   background: linear-gradient(93deg, #976902 7.37%, #fdd069 94.42%);
   box-shadow: 0px 8px 16px 0px #56225085;
-  padding: 12px 32px;
-  height: auto;
+  scale: 1.05;
+  transition: all 0.3s linear;
 }
 
 .btn-accent {
@@ -79,8 +79,8 @@ body {
 .btn-accent:hover {
   background: linear-gradient(240deg,  #D6A432 -8.94%, #562250 93.28%);
   box-shadow: 0px 8px 16px 0px #56225085;
-  padding: 12px 32px;
-  height: auto;
+  scale: 1.05;
+  transition: all 0.3s linear;
 }
 
 .btn-outline {
@@ -97,8 +97,8 @@ body {
   background-color:  #562250;
   color: #fafafa;
   box-shadow: 0px 8px 16px 0px #56225085;
-  padding: 12px 32px;
-  height: auto;
+  scale: 1.05;
+  transition: all 0.3s linear;
 }
 
 
