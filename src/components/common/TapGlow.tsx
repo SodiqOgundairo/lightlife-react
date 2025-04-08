@@ -7,7 +7,7 @@ const TapGlow = () => {
       const glow = document.createElement("div");
 
       glow.className =
-        "fixed w-16 h-16 bg-purple/40 rounded-full blur-xl opacity-100 animate-ping pointer-events-none";
+        "fixed w-16 h-16 bg-darkPurple/80 rounded-full blur-xl opacity-100 animate-ping pointer-events-none";
       glow.style.top = `${touch.clientY - 32}px`;
       glow.style.left = `${touch.clientX - 32}px`;
       glow.style.zIndex = "9999";
