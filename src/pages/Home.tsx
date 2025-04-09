@@ -1,7 +1,15 @@
 import montage from "./../assets/video/llcMontage.gif"
 import visionImage from "./../assets/img/visionImage.png"
+import dldImage from "./../assets/img/dldImage.png"
 import heartLine from "./../assets/img/heart-line.png"
+import graceImage from "./../assets/img/graceforgreaterworks.png"
+import luyd from "./../assets/img/light-up-your-day-1.png"
+import lbi from "./../assets/img/lbi-flyer.png"
+import relationshipClinic from "./../assets/img/relationsihpclinicnew.png"
+import wordFeast from "./../assets/img/wordfeastnew.png"
+import fourHours from "./../assets/img/four-hours-prayer-party.png"
 import MailingListComponent from "../components/common/MailingList"
+import { Link } from "react-router-dom"
 const Home = () => {
   return (
     <main className=" flex flex-col">
@@ -79,6 +87,69 @@ const Home = () => {
             </p>
           </div>
         </div>
+      </div>
+
+      <div className=" md:gap-15  mx-auto  w-full items-center flex flex-col-reverse md:flex-row justify-between bg-purple-mid/20">
+        <div className="flex flex-col w-full md:w-1/2 justify-center gap-3 md:gap-2 text-darkPurple px-8 md:px-9 lg:px-36 py-10 md:py-20 my-8 md:my-0 mr-5 md:mr-0 bg-light rounded-e-xl shadow-md">
+          <p className="text-2xl md:text-4xl font-bold hover:scale-105 transform transition-all duration-300 ease-linear hover:text-purple-mid">
+            Daily Light Devotional
+          </p>
+          <p className="italic text-sm md:text-base">
+            How you start your day determines the outcome. Start your day with
+            the right words as inspired by the Holy Spirit. You will definitely
+            be blessed by this powerful devotionals.
+          </p>
+          <div className="flex flex-col lg:flex-row justify-start gap-2 md:gap-5">
+            <Link to="/dld" className="btn-pry w-fit">
+              Read Today's Devotional
+            </Link>
+            <Link to="/dld" className="btn-outline w-fit">
+              Get DLD of the month
+            </Link>
+          </div>
+        </div>
+
+        <div className="md:w-1/2 hover:scale-105 transform transition-all duration-300 ease-linear hover:shadow-xl">
+          <img
+            src={dldImage}
+            alt="DAILY LIGHT DEVOTIONAL"
+            className="object-cover h-full w-full "
+          />
+        </div>
+      </div>
+
+      <div className="px-2 md:px-8 lg:px-36 py-10 gap-5 md:gap-7 md:py-20 mx-auto w-full items-center flex flex-col justify-center">
+        <p className="text-2xl md:text-4xl font-bold hover:scale-105 transform transition-all duration-300 ease-linear hover:text-purple-mid">
+          What's happening in LLC?
+        </p>
+
+        <div className="flex flex-row flex-wrap gap-5 md:gap-10 justify-center w-full">
+
+          <img src={lbi} alt="lbi" className="rounded-md hover:scale-110 transition-all duration-300 hover:shadow-xl ease-linear flex-1 w-full"/>
+
+          <img src={relationshipClinic} alt="Relationship Clinic" className="rounded-md hover:scale-110 transition-all duration-300 hover:shadow-xl ease-linear flex-1 w-full"/>
+
+          <img src={wordFeast} alt="Word Feast" className="rounded-md hover:scale-110 transition-all duration-300 hover:shadow-xl ease-linear flex-1 w-full"/>
+
+          <img src={fourHours} alt="Four Hours Prayer Party" className="rounded-md hover:scale-110 transition-all duration-300 hover:shadow-xl ease-linear flex-1 w-full"/>
+          
+          <img src={luyd} alt="Light Up Your Day" className="rounded-md hover:scale-110 transition-all duration-300 hover:shadow-xl ease-linear flex-1 w-full"/>
+
+          <img src={graceImage} alt="Grace for Greater Works" className="rounded-md hover:scale-110 transition-all duration-300 hover:shadow-xl ease-linear flex-1 w-full"/>
+        </div>
+
+        <p className="italic text-sm md:text-base text-center">
+            How you start your day determines the outcome. Start your day with
+            LLC is a known house of bread. Do join any of our services and be sure you will be blessed, In case you do not have a spiritual family, we are  very glad to have you join us
+          </p>
+          <div className="flex flex-col lg:flex-row justify-center items-center gap-2 md:gap-5">
+            <Link to="/" className="btn-pry w-fit">
+              Join our Community
+            </Link>
+            <Link to="/" className="btn-outline w-fit">
+              Get our Sermons
+            </Link>
+          </div>
       </div>
 
       <div className="px-2 md:px-8 lg:px-36 py-10 md:gap-7 md:py-20 mx-auto bg-gold-low/20 w-full items-center flex justify-center">
