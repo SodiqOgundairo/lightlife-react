@@ -5,13 +5,16 @@ import Footer from "./components/layout/Footer"
 import TapGlow from "./components/common/TapGlow"
 import CustomCursor from "./components/common/CustomCursor"
 import About from "./pages/About"
+// import EllipseGold from "./assets/img/svg/ellipseGold.svg"
+// import EllipsePurple from "./assets/img/svg/ellipsePurple.svg"
+// import FloatingSVG from "./components/common/Floaters"
 
 const App = () => {
   return (
     <>
     <TapGlow />
     <CustomCursor />
-      <Header />
+      <Header /> 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about-us" element={<About />} />

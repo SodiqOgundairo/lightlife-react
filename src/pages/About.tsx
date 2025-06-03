@@ -1,6 +1,8 @@
 import { CgMediaPodcast } from "react-icons/cg"
 import AboutImg from "./../assets/img/AboutHero.png"
+import PJ from "./../assets/img/PJ.png"
 import AccordionSection from "../helpers/AccordionSection"
+import MailingListComponent from "../components/common/MailingList"
 const About = () => {
   return (
     <main className="flex flex-col items-center justify-center">
@@ -69,11 +71,38 @@ const About = () => {
       {/* who we are END */}
 
       {/* meet PJ */}
-      <div className="bg-gradient-to-br from-gold to-darkPurple px-10 py-20 md:p-36 w-full flex justify-center gap-4 md:gap-8">
-        
+      <div className="bg-gradient-to-br from-gold to-darkPurple px-10 py-20 md:p-36 w-full flex flex-col justify-center gap-4 md:gap-8 items-center">
+        <p className="text-2xl md:text-4xl font-bold text-white">
+          Meet our Pastor
+        </p>
+        <div className="flex flex-col md:flex-row gap-4 justify-center">
+          <div className="flex flex-col md:w-1/5">
+          <img src={PJ} alt="Pastor Juwon Owolabi" className="rounded-md"/>
+          <p className="text-light text-2xl font-bold mt-4">
+            Pastor Juwon Owolabi</p>
+            <p className="italic text-light">Lead Serving Pastor, LightLife Church</p>
+          </div>
 
+        <div className="p-10 rounded-md bg-light text-dark md:w-3/5 flex flex-col justify-between gap-4">
+          <p>Juwon Owolabi is an emerging voice in this generation, a transformational Speaker and Student of the word, Leadership Coach, and Serving Pastor of Lightlife Church, a fast-growing church in Nigeria.</p>
+
+          <p>He is the CEO of Juwon Owolabi Consults and JULA Global. His mission is to help individuals and organizations discover, develop, and deploy their individual and leadership power for optimum effectiveness, significance, and success in life.</p>
+
+          <p>Leveraging on this, he emphasizes the need for Spiritual Rebirth, Mind Transformation, and Cultural Revolution for personal success and national development.</p>
+
+          <p>His teachings of the scripture aim to help Christians understand the full benefits of God’s grace in the New Covenant, living a truly free and victorious life.</p>
+
+          <p>He his the author of several best selling books and the popular DailyLight, a Daily devotional that helps believers walk intimately with the Father.</p>
+
+          <p>He is happily married to Lade with whom they run their ministries and businesses together. They are blessed with two beautiful daughters, Zoe and Zion</p>
+        </div>
+        </div>
       </div>
       {/* meet PJ end*/}
+
+            <div className="px-2 md:px-8 lg:px-36 py-10 md:gap-7 md:py-20 mx-auto bg-gold-low/20 w-full items-center flex justify-center">
+        <MailingListComponent />
+      </div>
     </main>
   )
 }

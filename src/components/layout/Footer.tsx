@@ -6,7 +6,7 @@ import { PiTelegramLogo, PiTiktokLogoLight } from "react-icons/pi"
 const Footer = () => {
     const currentYear = new Date().getFullYear()
     const copyrightText = `© ${currentYear} Lightlife Church. All rights reserved.`
-    const designerName = " Yemi Ogundairo"
+    const designerName = " Yemi"
   return (
     <footer
       className="flex flex-col px-8 md:px-8 lg:px-36 py-10 gap-7 md:py-20 bg-darkPurple text-light"
