@@ -32,7 +32,7 @@ const Footer = () => {
         <ul className="text-xs space-y-5">
           <li className="list-item hover:text-gold hover:scale-105 hover:underline transition-all ease-linear">
             {" "}
-            <Link to={"/"}>About LLC </Link>{" "}
+            <Link to={"/about-us"}>About LLC </Link>{" "}
           </li>
           <li className="list-item hover:text-gold hover:scale-105 hover:underline transition-all ease-linear">
             {" "}
