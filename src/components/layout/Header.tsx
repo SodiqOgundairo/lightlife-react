@@ -1,10 +1,17 @@
 import { useState } from "react"
 import { FiMenu, FiX } from "react-icons/fi"
 import logo from "../../assets/img/LLC_Logo.png"
-import { Link, NavLink } from "react-router-dom"
+import { Link, NavLink, useNavigate } from "react-router-dom"
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const navigate = useNavigate()
+
+  const handleNavClick = (path: string) => {
+    setIsOpen(false) // Close the menu on navigation
+    navigate(path) // Navigate to the selected path
+    window.scrollTo(0, 0) // Scroll to the top of the page
+  }
   // const [scrolled, setScrolled] = useState(false)
 
   // Handle scroll for sticky navbar
@@ -43,6 +50,7 @@ const Header = () => {
           <NavLink
             key={item.name}
             to={item.path}
+            onClick={() => handleNavClick(item.path)}
             className={({ isActive }) =>
               ` px-3 py-2 text-sm font-medium transition-colors hover:scale-120  duration-300 ease-linear hover:text-purple-mid ${
                 isActive
@@ -79,6 +87,7 @@ const Header = () => {
             <NavLink
               key={item.name}
               to={item.path}
+              onClick ={() => handleNavClick(item.path)} 
               className={({ isActive }) =>
                 `block px-3 py-2 rounded-md text-base font-medium ${
                   isActive
@@ -86,7 +95,7 @@ const Header = () => {
                     : "text-darkPurple hover:bg-gray-1"
                 }`
               }
-              onClick={() => setIsOpen(false)}
+              // onClick={() => setIsOpen(false)}
             >
               {item.name}
             </NavLink>
