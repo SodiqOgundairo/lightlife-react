@@ -5,6 +5,7 @@ import Footer from "./components/layout/Footer"
 import TapGlow from "./components/common/TapGlow"
 import CustomCursor from "./components/common/CustomCursor"
 import About from "./pages/About"
+import DLD from "./pages/DLD"
 // import EllipseGold from "./assets/img/svg/ellipseGold.svg"
 // import EllipsePurple from "./assets/img/svg/ellipsePurple.svg"
 // import FloatingSVG from "./components/common/Floaters"
@@ -18,6 +19,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about-us" element={<About />} />
+        <Route path="/daily-light-devotional" element={<DLD />} />
       </Routes>
       <Footer />
     </>

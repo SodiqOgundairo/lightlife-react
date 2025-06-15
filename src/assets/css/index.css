@@ -77,7 +77,7 @@ body {
 }
 
 .gold-purple {
-  background: linear-gradient(293deg, #976902 7.37%, #FDD069 94.42%);
+  background: linear-gradient(267deg, #590FB7 17.5%, #EFB83B 117.28%);
   -webkit-background-clip: text; /* For Safari/Chrome */
   background-clip: text;
   color: transparent; /* Makes the text show the gradient */

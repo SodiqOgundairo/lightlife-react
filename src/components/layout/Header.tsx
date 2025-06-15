@@ -25,14 +25,14 @@ const Header = () => {
 
   // Nav items
   const navItems = [
-    { name: "Home", path: "/" },
+    // { name: "Home", path: "/" }, 
     { name: "About Us", path: "/about-us" },
-    { name: "Sermons", path: "/sermons" },
+    { name: "DLD", path: "/daily-light-devotional" },
     { name: "Our Programmes", path: "/our-programmes" },
     { name: "Testimonies", path: "/testimonies" },
   ]
 
-  return (
+  return ( 
     <header className="fixed w-full z-50 md:py-2 md:px-8 lg:px-36">
     <div className= 'transition-all duration-300 md:rounded-full shadow-sm bg-gray-1/20 backdrop-blur-lg px-4 py-2'>
     <div className="container mx-auto flex justify-between items-center relative"> 
