@@ -1,6 +1,4 @@
 import { CgMediaPodcast } from "react-icons/cg"
-import AboutImg from "./../assets/img/AboutHero.png"
-import PJ from "./../assets/img/PJ.png"
 import AccordionSection from "../helpers/AccordionSection"
 import MailingListComponent from "../components/common/MailingList"
 import CloudinaryImage from "../utils/ImageItem"

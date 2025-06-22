@@ -17,6 +17,10 @@ export const cloudinaryImages = {
     .format('auto')
     .quality('auto'),
 
+  error404: cld.image('LLCImageRepo/Images/Img/r8omzq98wexbrvxzzsvt')
+    .format('auto')
+    .quality('auto'),
+
   pj: cld.image('LLCImageRepo/Images/Img/ch3lqwqowwstkplyaqyv')
     .format('auto')
     .quality('auto'),

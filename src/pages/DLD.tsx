@@ -28,7 +28,7 @@ const DLD = () => {
             alt="DLD Hero Background"
           />
         </div>
-      </div>
+      </div>  
       {/* hero ends*/}
 
       {/* DLD content */}
