@@ -33,7 +33,7 @@ const CreateEntryModal: React.FC<CreateEntryModalProps> = ({ onClose, onSave }) 
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center p-4 z-50">
+    <div className="fixed inset-0 bg-gray-900/30 backdrop-blur-sm flex justify-center items-center p-4 z-50">
       <div className="bg-light p-6 md:p-8 rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
         <h2 className="text-2xl font-bold text-purple mb-6">Create New Devotional Entry</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -65,11 +65,11 @@ const CreateEntryModal: React.FC<CreateEntryModalProps> = ({ onClose, onSave }) 
           </div>
           <div>
             <label htmlFor="devotionalText" className="block text-sm font-medium text-darkPurple">Devotional Text</label>
-            <textarea id="devotionalText" value={devotionalText} onChange={(e) => setDevotionalText(e.target.value)} rows={5} required className="input-field mt-1 block w-full"></textarea>
+            <textarea id="devotionalText" value={devotionalText} onChange={(e) => setDevotionalText(e.target.value)} rows={10} required className="input-field mt-1 block w-full"></textarea>
           </div>
           <div>
             <label htmlFor="prayer" className="block text-sm font-medium text-darkPurple">Prayer</label>
-            <textarea id="prayer" value={prayer} onChange={(e) => setPrayer(e.target.value)} rows={3} className="input-field mt-1 block w-full"></textarea>
+            <textarea id="prayer" value={prayer} onChange={(e) => setPrayer(e.target.value)} rows={4} className="input-field mt-1 block w-full"></textarea>
           </div>
           <div>
             <label htmlFor="bibleReadingPlan" className="block text-sm font-medium text-darkPurple">1-Year Bible Reading Plan</label>

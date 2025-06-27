@@ -146,6 +146,20 @@ const AdminDashboard: React.FC = () => {
               {/* Add more navigation items here as new sections are developed */}
             </ul>
           </nav>
+          <div className="mt-auto pt-4 border-t border-purple-light/30">
+            <small className="text-xs text-light/70 block text-center">
+              Designed with ❤ by
+              <a
+                href="https://twitter.com/yemi_ogundairo"
+                className="italic font-semibold hover:text-gold transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {" "}
+                Yemi
+              </a>
+            </small>
+          </div>
         </aside>
 
         {/* Main Content Area */}
