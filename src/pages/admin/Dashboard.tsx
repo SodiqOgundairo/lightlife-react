@@ -18,6 +18,7 @@ const AdminDashboard: React.FC = () => {
   const [showViewModal, setShowViewModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedEntry, setSelectedEntry] = useState<DevotionalEntry | null>(null);
+  const [activeSection, setActiveSection] = useState<string>('dld'); // Moved here
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -101,8 +102,6 @@ const AdminDashboard: React.FC = () => {
       </div>
     );
   }
-
-  const [activeSection, setActiveSection] = useState<string>('dld'); // Default to DLD management
 
   // Main Dashboard Content
   return (
