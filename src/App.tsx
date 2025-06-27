@@ -22,10 +22,7 @@ const App = () => {
       <div className="container mx-auto">
         <Link to="/">
 
-          <img src="/LLC_Logo.png" alt="LightLife Church Logo" className="h-10 md:h-12 w-auto" />
-
           <img src="/LLC_Logo.png" alt="Living Light Christian Church Logo" className="h-10 md:h-12 w-auto" />
-
         </Link>
       </div>
     </header>
@@ -45,10 +42,7 @@ const App = () => {
 
       {isAdminPage ? <AdminHeader /> : <Header />}
 
-      <div className="flex-grow">
-
-      <div className="flex-grow"> {/* Added to help push footer down if content is short */}
-
+      <div className="flex-grow"> {/* This outer flex-grow helps push footer down */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<About />} />
@@ -59,10 +53,7 @@ const App = () => {
         </Routes>
       </div>
 
-      { !isAdminPage && <Footer />} {/* Render Footer only if not admin page */}
-
       {isAdminPage ? <AdminFooter /> : <Footer />}
-
     </>
   );
 }
