@@ -4,7 +4,11 @@ import { DevotionalEntry } from '../../types';
 import CreateEntryModal from '../../components/admin/CreateEntryModal';
 import ViewEntryModal from '../../components/admin/ViewEntryModal';
 import EditEntryModal from '../../components/admin/EditEntryModal';
+
 import DldManagement from '../../components/admin/DldManagement';
+
+import DldManagement from '../../components/admin/DldManagement'; // Import DLD Management component
+
 
 const AdminDashboard: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -18,7 +22,11 @@ const AdminDashboard: React.FC = () => {
   const [showViewModal, setShowViewModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedEntry, setSelectedEntry] = useState<DevotionalEntry | null>(null);
+
   const [activeSection, setActiveSection] = useState<string>('dld');
+
+  const [activeSection, setActiveSection] = useState<string>('dld'); // Moved here
+
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -39,7 +47,11 @@ const AdminDashboard: React.FC = () => {
   const handleCreateEntry = (newEntryData: Omit<DevotionalEntry, 'id'>) => {
     const newEntry: DevotionalEntry = {
       ...newEntryData,
+
       id: Date.now().toString(),
+
+      id: Date.now().toString(), // Simple unique ID for now
+
     };
     setDevotionals(prevDevotionals => [newEntry, ...prevDevotionals]);
     setShowCreateModal(false);
@@ -65,7 +77,11 @@ const AdminDashboard: React.FC = () => {
       <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-4 z-50">
         <div className="bg-gradient-to-br from-purple-light to-darkPurple text-light p-8 rounded-xl shadow-2xl w-full max-w-md">
           <form onSubmit={handleLogin} className="flex flex-col gap-6">
+
             <h2 className="text-3xl font-bold text-center text-light mb-4">Admin Login</h2> {/* Title color updated */}
+
+            <h2 className="text-3xl font-bold text-center gold-purple mb-4">Admin Login</h2>
+
             <div className="flex flex-col gap-2">
               <label htmlFor="username" className="text-lg font-medium">Username:</label>
               <input
@@ -113,6 +129,7 @@ const AdminDashboard: React.FC = () => {
           <button
             onClick={() => {
               setIsLoggedIn(false);
+
             }}
             className="btn-pry bg-red-500 hover:bg-red-700 text-light font-bold py-2 px-3 text-sm"
           >
@@ -123,7 +140,11 @@ const AdminDashboard: React.FC = () => {
 
       <div className="flex flex-1">
         {/* Sidebar Navigation */}
+
         <aside className="w-64 bg-purple text-light p-4 space-y-3 flex flex-col">
+
+        <aside className="w-64 bg-purple text-light p-4 space-y-3">
+
           <nav>
             <ul>
               <li>
@@ -136,12 +157,17 @@ const AdminDashboard: React.FC = () => {
               </li>
               <li>
                 <button
+
                   onClick={() => setActiveSection('users')}
+
+                  onClick={() => setActiveSection('users')} // Placeholder for future section
+
                   className={`w-full text-left px-3 py-2 rounded-md hover:bg-purple-light transition-colors ${activeSection === 'users' ? 'bg-gold text-darkPurple font-semibold' : 'hover:text-gold-low'}`}
                 >
                   User Management (Future)
                 </button>
               </li>
+
             </ul>
           </nav>
           <div className="mt-auto pt-4 border-t border-purple-light/30 text-center">
@@ -149,6 +175,13 @@ const AdminDashboard: React.FC = () => {
               © {new Date().getFullYear()} LightLife Church. All rights reserved.
             </p>
             <small className="text-xs text-light/70 block">
+
+              {/* Add more navigation items here as new sections are developed */}
+            </ul>
+          </nav>
+          <div className="mt-auto pt-4 border-t border-purple-light/30">
+            <small className="text-xs text-light/70 block text-center">
+
               Designed with ❤ by
               <a
                 href="https://twitter.com/yemi_ogundairo"
@@ -181,9 +214,17 @@ const AdminDashboard: React.FC = () => {
                 <p className="text-gray-700">Placeholder for User Management features.</p>
               </div>
             )}
+
+            {/* Render other sections based on activeSection */}
+
           </div>
         </main>
       </div>
+
+
+      {/* Modals will still be rendered here at the top level of AdminDashboard
+          so they can be triggered by the DldManagement component,
+          but their state will be managed by AdminDashboard. */}
 
       {showCreateModal && <CreateEntryModal onClose={() => setShowCreateModal(false)} onSave={handleCreateEntry} />}
       {showViewModal && <ViewEntryModal entry={selectedEntry} onClose={() => { setShowViewModal(false); setSelectedEntry(null); }} />}
