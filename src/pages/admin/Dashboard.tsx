@@ -68,7 +68,7 @@ const AdminDashboard: React.FC = () => {
       <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-4 z-50">
         <div className="bg-gradient-to-br from-purple-light to-darkPurple text-light p-8 rounded-xl shadow-2xl w-full max-w-md">
           <form onSubmit={handleLogin} className="flex flex-col gap-6">
-            <h2 className="text-3xl font-bold text-center gold-purple mb-4">Admin Login</h2>
+            <h2 className="text-3xl font-bold text-center text-light mb-4">Admin Login</h2> {/* Changed gold-purple to text-light */}
             <div className="flex flex-col gap-2">
               <label htmlFor="username" className="text-lg font-medium">Username:</label>
               <input
