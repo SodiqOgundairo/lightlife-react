@@ -10,7 +10,7 @@ const ViewEntryModal: React.FC<ViewEntryModalProps> = ({ entry, onClose }) => {
   if (!entry) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center p-4 z-50">
+    <div className="fixed inset-0 bg-gray-900/30 backdrop-blur-sm flex justify-center items-center p-4 z-50">
       <div className="bg-light p-6 md:p-8 rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold text-purple">{entry.title}</h2>
