@@ -13,7 +13,6 @@ import AdminDashboard from "./pages/admin/Dashboard";
 const App = () => {
   const location = useLocation();
   const isAdminPage = location.pathname.startsWith('/admin');
-  const currentYear = new Date().getFullYear();
 
   const AdminHeader = () => (
     <header className="bg-darkPurple p-3 shadow-md">
