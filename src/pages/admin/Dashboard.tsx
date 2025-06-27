@@ -4,9 +4,6 @@ import { DevotionalEntry } from '../../types';
 import CreateEntryModal from '../../components/admin/CreateEntryModal';
 import ViewEntryModal from '../../components/admin/ViewEntryModal';
 import EditEntryModal from '../../components/admin/EditEntryModal';
-
-import DldManagement from '../../components/admin/DldManagement';
-
 import DldManagement from '../../components/admin/DldManagement'; // Import DLD Management component
 
 
@@ -24,8 +21,6 @@ const AdminDashboard: React.FC = () => {
   const [selectedEntry, setSelectedEntry] = useState<DevotionalEntry | null>(null);
 
   const [activeSection, setActiveSection] = useState<string>('dld');
-
-  const [activeSection, setActiveSection] = useState<string>('dld'); // Moved here
 
 
   useEffect(() => {
@@ -47,11 +42,7 @@ const AdminDashboard: React.FC = () => {
   const handleCreateEntry = (newEntryData: Omit<DevotionalEntry, 'id'>) => {
     const newEntry: DevotionalEntry = {
       ...newEntryData,
-
-      id: Date.now().toString(),
-
       id: Date.now().toString(), // Simple unique ID for now
-
     };
     setDevotionals(prevDevotionals => [newEntry, ...prevDevotionals]);
     setShowCreateModal(false);
@@ -77,11 +68,7 @@ const AdminDashboard: React.FC = () => {
       <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-4 z-50">
         <div className="bg-gradient-to-br from-purple-light to-darkPurple text-light p-8 rounded-xl shadow-2xl w-full max-w-md">
           <form onSubmit={handleLogin} className="flex flex-col gap-6">
-
-            <h2 className="text-3xl font-bold text-center text-light mb-4">Admin Login</h2> {/* Title color updated */}
-
             <h2 className="text-3xl font-bold text-center gold-purple mb-4">Admin Login</h2>
-
             <div className="flex flex-col gap-2">
               <label htmlFor="username" className="text-lg font-medium">Username:</label>
               <input
@@ -140,13 +127,9 @@ const AdminDashboard: React.FC = () => {
 
       <div className="flex flex-1">
         {/* Sidebar Navigation */}
-
         <aside className="w-64 bg-purple text-light p-4 space-y-3 flex flex-col">
-
-        <aside className="w-64 bg-purple text-light p-4 space-y-3">
-
-          <nav>
-            <ul>
+          <nav className="flex-grow">
+            <ul className="space-y-2">
               <li>
                 <button
                   onClick={() => setActiveSection('dld')}
@@ -157,31 +140,20 @@ const AdminDashboard: React.FC = () => {
               </li>
               <li>
                 <button
-
-                  onClick={() => setActiveSection('users')}
-
                   onClick={() => setActiveSection('users')} // Placeholder for future section
-
                   className={`w-full text-left px-3 py-2 rounded-md hover:bg-purple-light transition-colors ${activeSection === 'users' ? 'bg-gold text-darkPurple font-semibold' : 'hover:text-gold-low'}`}
                 >
                   User Management (Future)
                 </button>
               </li>
-
+              {/* Add more navigation items here as new sections are developed */}
             </ul>
           </nav>
-          <div className="mt-auto pt-4 border-t border-purple-light/30 text-center">
+          <div className="pt-4 border-t border-purple-light/30 text-center">
             <p className="text-xs text-light/70 mb-1">
               © {new Date().getFullYear()} LightLife Church. All rights reserved.
             </p>
             <small className="text-xs text-light/70 block">
-
-              {/* Add more navigation items here as new sections are developed */}
-            </ul>
-          </nav>
-          <div className="mt-auto pt-4 border-t border-purple-light/30">
-            <small className="text-xs text-light/70 block text-center">
-
               Designed with ❤ by
               <a
                 href="https://twitter.com/yemi_ogundairo"
