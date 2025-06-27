@@ -3,7 +3,8 @@ import { DUMMY_DEVOTIONALS } from '../../data/dummyDevotionals';
 import { DevotionalEntry } from '../../types';
 import CreateEntryModal from '../../components/admin/CreateEntryModal';
 import ViewEntryModal from '../../components/admin/ViewEntryModal';
-import EditEntryModal from '../../components/admin/EditEntryModal'; // Import the Edit modal
+import EditEntryModal from '../../components/admin/EditEntryModal';
+import DldManagement from '../../components/admin/DldManagement'; // Import DLD Management component
 
 const AdminDashboard: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -101,81 +102,82 @@ const AdminDashboard: React.FC = () => {
     );
   }
 
+  const [activeSection, setActiveSection] = useState<string>('dld'); // Default to DLD management
+
   // Main Dashboard Content
   return (
-    <div className="p-5 md:p-10 bg-gray-100 min-h-screen">
-      <div className="container mx-auto">
-        <div className="flex justify-between items-center mb-8 p-4 bg-light rounded-lg shadow-md">
-          <h1 className="text-3xl md:text-4xl gold-purple font-bold">Daily Devotionals</h1>
-          <div>
-            <button
-              onClick={() => setShowCreateModal(true)} // Open Create Modal
-              className="btn-pry bg-gold hover:bg-gold-dark text-darkPurple font-semibold py-2 px-4 rounded mr-4 transition-transform duration-150 ease-in-out hover:scale-105"
-            >
-              Create New Entry
-            </button>
-            <button
-              onClick={() => setIsLoggedIn(false)}
-              className="btn-pry bg-red-500 hover:bg-red-700 text-light font-bold py-2 px-4 rounded transition-colors duration-150 ease-in-out"
-            >
-              Logout
-            </button>
+    <div className="flex flex-col min-h-screen bg-gray-100">
+      {/* Admin Header */}
+      <header className="bg-darkPurple text-light p-4 shadow-md">
+        <div className="container mx-auto flex justify-between items-center">
+          <h1 className="text-2xl font-bold gold-purple">Admin Panel</h1>
+          <button
+            onClick={() => {
+              setIsLoggedIn(false);
+              // Potentially clear other admin states if necessary
+            }}
+            className="btn-pry bg-red-500 hover:bg-red-700 text-light font-bold py-2 px-3 text-sm"
+          >
+            Logout
+          </button>
+        </div>
+      </header>
+
+      <div className="flex flex-1">
+        {/* Sidebar Navigation */}
+        <aside className="w-64 bg-purple text-light p-4 space-y-3">
+          <nav>
+            <ul>
+              <li>
+                <button
+                  onClick={() => setActiveSection('dld')}
+                  className={`w-full text-left px-3 py-2 rounded-md hover:bg-purple-light transition-colors ${activeSection === 'dld' ? 'bg-gold text-darkPurple font-semibold' : 'hover:text-gold-low'}`}
+                >
+                  DLD Management
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => setActiveSection('users')} // Placeholder for future section
+                  className={`w-full text-left px-3 py-2 rounded-md hover:bg-purple-light transition-colors ${activeSection === 'users' ? 'bg-gold text-darkPurple font-semibold' : 'hover:text-gold-low'}`}
+                >
+                  User Management (Future)
+                </button>
+              </li>
+              {/* Add more navigation items here as new sections are developed */}
+            </ul>
+          </nav>
+        </aside>
+
+        {/* Main Content Area */}
+        <main className="flex-1 p-6 md:p-10">
+          <div className="container mx-auto">
+            {activeSection === 'dld' && (
+              <DldManagement
+                devotionals={devotionals}
+                onShowCreateModal={() => setShowCreateModal(true)}
+                onShowViewModal={(entry) => { setSelectedEntry(entry); setShowViewModal(true); }}
+                onShowEditModal={(entry) => { setSelectedEntry(entry); setShowEditModal(true); }}
+                onDeleteEntry={handleDeleteEntry}
+              />
+            )}
+            {activeSection === 'users' && (
+              <div>
+                <h2 className="text-3xl font-bold text-purple mb-6">User Management</h2>
+                <p className="text-gray-700">Placeholder for User Management features.</p>
+              </div>
+            )}
+            {/* Render other sections based on activeSection */}
           </div>
-        </div>
-
-        <div className="bg-light shadow-md rounded-lg p-4 md:p-6">
-          <h2 className="text-2xl text-purple font-semibold mb-4">Devotional Entries</h2>
-          {devotionals.length === 0 ? (
-            <p className="text-gray-500">No devotional entries found. Click "Create New Entry" to add one.</p>
-          ) : (
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gold-low/30">
-                  <tr>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-darkPurple uppercase tracking-wider">Date</th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-darkPurple uppercase tracking-wider">Title</th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-darkPurple uppercase tracking-wider">Actions</th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {devotionals.map((entry) => (
-                    <tr key={entry.id} className="hover:bg-gold-low/10 transition-colors duration-150 ease-in-out">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{entry.date}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{entry.title}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <button
-                          onClick={() => { setSelectedEntry(entry); setShowViewModal(true); }}
-                          className="text-purple hover:text-purple-mid font-semibold mr-3"
-                        >
-                          View
-                        </button>
-                        <button
-                          onClick={() => { setSelectedEntry(entry); setShowEditModal(true); }}
-                          className="text-gold hover:text-gold-dark font-semibold mr-3"
-                        >
-                          Edit
-                        </button>
-                        <button
-                          onClick={() => handleDeleteEntry(entry.id)}
-                          className="text-red-500 hover:text-red-700 font-semibold"
-                        >
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-        </div>
-
-        {/* Modals */}
-        {showCreateModal && <CreateEntryModal onClose={() => setShowCreateModal(false)} onSave={handleCreateEntry} />}
-        {showViewModal && <ViewEntryModal entry={selectedEntry} onClose={() => { setShowViewModal(false); setSelectedEntry(null); }} />}
-        {showEditModal && selectedEntry && <EditEntryModal entry={selectedEntry} onClose={() => {setShowEditModal(false); setSelectedEntry(null);}} onSave={handleUpdateEntry} />}
-
+        </main>
       </div>
+
+      {/* Modals will still be rendered here at the top level of AdminDashboard
+          so they can be triggered by the DldManagement component,
+          but their state will be managed by AdminDashboard. */}
+      {showCreateModal && <CreateEntryModal onClose={() => setShowCreateModal(false)} onSave={handleCreateEntry} />}
+      {showViewModal && <ViewEntryModal entry={selectedEntry} onClose={() => { setShowViewModal(false); setSelectedEntry(null); }} />}
+      {showEditModal && selectedEntry && <EditEntryModal entry={selectedEntry} onClose={() => { setShowEditModal(false); setSelectedEntry(null); }} onSave={handleUpdateEntry} />}
     </div>
   );
 };
