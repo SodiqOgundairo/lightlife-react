@@ -146,11 +146,16 @@ const AdminDashboard: React.FC = () => {
               {/* Add more navigation items here as new sections are developed */}
             </ul>
           </nav>
+          
           <div className="mt-auto pt-4 border-t border-purple-light/30 text-center">
             <p className="text-xs text-light/70 mb-1">
               © {new Date().getFullYear()} LightLife Church. All rights reserved.
             </p>
             <small className="text-xs text-light/70 block">
+=======
+          <div className="mt-auto pt-4 border-t border-purple-light/30">
+            <small className="text-xs text-light/70 block text-center">
+
               Designed with ❤ by
               <a
                 href="https://twitter.com/yemi_ogundairo"

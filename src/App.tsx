@@ -14,15 +14,30 @@ const App = () => {
   const location = useLocation();
   const isAdminPage = location.pathname.startsWith('/admin');
 
+
+  const currentYear = new Date().getFullYear();
+
+
   const AdminHeader = () => (
     <header className="bg-darkPurple p-3 shadow-md">
       <div className="container mx-auto">
         <Link to="/">
           <img src="/LLC_Logo.png" alt="LightLife Church Logo" className="h-10 md:h-12 w-auto" />
+
+          <img src="/LLC_Logo.png" alt="Living Light Christian Church Logo" className="h-10 md:h-12 w-auto" />
+
         </Link>
       </div>
     </header>
   );
+
+
+  const AdminFooter = () => (
+    <footer className="bg-darkPurple text-light text-center p-4 text-xs md:text-sm">
+      <p>© {currentYear} Living Light Christian Church. All rights reserved.</p>
+    </footer>
+  );
+
 
   return (
     <>
@@ -42,7 +57,11 @@ const App = () => {
         </Routes>
       </div>
 
+
       { !isAdminPage && <Footer />} {/* Render Footer only if not admin page */}
+
+      {isAdminPage ? <AdminFooter /> : <Footer />}
+
     </>
   );
 }
