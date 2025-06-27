@@ -19,7 +19,7 @@ const App = () => {
     <header className="bg-darkPurple p-3 shadow-md">
       <div className="container mx-auto">
         <Link to="/">
-          <img src="/LLC_Logo.png" alt="Living Light Christian Church Logo" className="h-10 md:h-12 w-auto" />
+          <img src="/LLC_Logo.png" alt="LightLife Church Logo" className="h-10 md:h-12 w-auto" />
         </Link>
       </div>
     </header>
