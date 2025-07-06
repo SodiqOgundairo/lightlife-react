@@ -61,11 +61,11 @@ const AdminDashboard: React.FC = () => {
       setDevotionals(prevDevotionals => prevDevotionals.filter(entry => entry.id !== entryId));
     }
   };
-
+  
   if (!isLoggedIn) {
     // Login Modal
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-4 z-50">
+      <div className="fixed inset-0 bg-dark/50 bg-opacity-50 flex justify-center items-center p-4 z-50">
         <div className="bg-gradient-to-br from-purple-light to-darkPurple text-light p-8 rounded-xl shadow-2xl w-full max-w-md">
           <form onSubmit={handleLogin} className="flex flex-col gap-6">
             <h2 className="text-3xl font-bold text-center text-light mb-4">Admin Login</h2> {/* Changed gold-purple to text-light */}

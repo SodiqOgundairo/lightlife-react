@@ -13,6 +13,14 @@ export const cloudinaryImages = {
     .format('auto')
     .quality('auto'),
 
+  TestimonyBg: cld.image('LLCImageRepo/Images/Img/testimonyBg_jxh3da ')
+    .format('auto')
+    .quality('auto'),
+
+  SupportBg: cld.image('LLCImageRepo/Images/Img/suppportBg_qmxun8 ')
+    .format('auto')
+    .quality('auto'),
+ 
   dldHeroBg: cld.image('LLCImageRepo/Images/Img/h2bnshfuvb6kzbth8mwk')
     .format('auto')
     .quality('auto'),

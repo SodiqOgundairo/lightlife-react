@@ -1,49 +1,45 @@
-import { CgMediaPodcast } from "react-icons/cg"
-import AboutImg from "./../assets/img/AboutHero.png"
+
 import PJ from "./../assets/img/PJ.png"
 import AccordionSection from "../helpers/AccordionSection"
 import MailingListComponent from "../components/common/MailingList"
-import Images from "../utils/Images"
+import { BsSoundwave } from "react-icons/bs"
+import CloudinaryImage from "../utils/ImageItem"
 const Testimony = () => {
-  return (
+  return ( 
     <main className="flex flex-col items-center justify-center">
       {/* hero */}
       <div className="flex flex-col md:flex-row mt-20 mb-16 md:mt-28 px-2 md:px-32 items-center gap-8 md:gap-3">
         <div className="flex flex-col gap-3">
-          <p className="text-3xl md:text-4xl text-purple">About</p>
-          <p className="text-4xl md:text-5xl gold-gradient font-bold hover:scale-110 transition-all ease-linear">
-            LIGHTLIFE CHURCH
+          <p className="text-3xl md:text-4xl text-purple">Share your</p>
+          <p className="text-4xl md:text-5xl gold-purple font-bold hover:scale-110 transition-all ease-linear">
+            Testimony
           </p>
 
-          <Images />
 
           <p className="italic text-darkPurple md:w-4/5">
-            LLC is not just a place, it is a people. It is a community where
-            sinners, the destitute, the despondent, the rejected, the depressed,
-            the confused, the hurting people can find salvation, love, hope joy,
-            purpose, peace, acceptance and guidance.{" "}
+            Be inspired by real-life stories of faith, miracles, and breakthroughs. Witness how God is changing lives in our community—one testimony at a time. Your story could be next!
           </p>
 
           <a
             href=""
             className="btn-accent flex items-center gap-2 justify-center w-fit"
           >
-            Watch Online <CgMediaPodcast />{" "}
+            Share your testimony <BsSoundwave />{" "}
           </a>
         </div>
 
         <div className="flex flex-col gap-2">
-          <img
-            src={AboutImg}
-            alt="ImageOne"
-            className="hover:scale-120 hover:rotate-3 "
+          <CloudinaryImage
+            imageKey="TestimonyBg"
+            className="hover:scale-120 hover:rotate-3"
+            alt="Testimony Hero Background"
           />
         </div>
       </div>
       {/* hero end */}
 
-      {/* about LLc */}
-      <div className="bg-[#FFC94F33] px-10 py-20 md:p-36 w-full flex flex-col gap-4 md:gap-8">
+      {/* testimony LLc */}
+      <div className="bg-[#FFC94F33] px-10 py-20 md:p-36 w-full flex md:flex-row gap-4 md:gap-8">
         <p className="text-darkPurple">
           LLC is a place for growing and grooming believers into maturity
           through intentional teaching of the undiluted revelation of the
@@ -62,8 +58,26 @@ const Testimony = () => {
           earthly relevant. This is our mandate and we a resolved to make it
           happen with you on our team.
         </p>
+
+        <p className="text-darkPurple">
+          It is the place your true worth and identity is revealed, valued and
+          expressed. We believe that every believer has a purpose to be
+          fulfilled here on earth. Therefore, we equip believers to succeed in
+          their chosen career, take dominion and leadership in order to be
+          earthly relevant. This is our mandate and we a resolved to make it
+          happen with you on our team.
+        </p>
+
+        <p className="text-darkPurple">
+          It is the place your true worth and identity is revealed, valued and
+          expressed. We believe that every believer has a purpose to be
+          fulfilled here on earth. Therefore, we equip believers to succeed in
+          their chosen career, take dominion and leadership in order to be
+          earthly relevant. This is our mandate and we a resolved to make it
+          happen with you on our team.
+        </p>
       </div>
-      {/* about LLc end */}
+      {/* testimony LLc end */}
 
       {/* who we are */}
       <div className="p-4 md:p-36 w-full gap-10 flex flex-col bg-light">
