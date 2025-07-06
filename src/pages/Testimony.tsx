@@ -39,8 +39,8 @@ const Testimony = () => {
       {/* hero end */}
 
       {/* testimony LLc */}
-      <div className="bg-[#FFC94F33] px-10 py-20 md:p-36 w-full flex md:flex-row gap-4 md:gap-8">
-        <p className="text-darkPurple">
+      <div className="bg-[#FFC94F33] px-10 py-20 md:p-36 w-full grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+        <div className="text-darkPurple">
           LLC is a place for growing and grooming believers into maturity
           through intentional teaching of the undiluted revelation of the
           Scripture. We believe that when Christ is unveiled, Saints are
@@ -48,34 +48,34 @@ const Testimony = () => {
           end time global harvest and also preparing saints for the age to come.
           We believe that our core responsibility is not to raise members but
           disciples.
-        </p>
+        </div>
 
-        <p className="text-darkPurple">
+        <div className="text-darkPurple">
           It is the place your true worth and identity is revealed, valued and
           expressed. We believe that every believer has a purpose to be
           fulfilled here on earth. Therefore, we equip believers to succeed in
           their chosen career, take dominion and leadership in order to be
           earthly relevant. This is our mandate and we a resolved to make it
           happen with you on our team.
-        </p>
+        </div>
 
-        <p className="text-darkPurple">
+        <div className="text-darkPurple">
           It is the place your true worth and identity is revealed, valued and
           expressed. We believe that every believer has a purpose to be
           fulfilled here on earth. Therefore, we equip believers to succeed in
           their chosen career, take dominion and leadership in order to be
           earthly relevant. This is our mandate and we a resolved to make it
           happen with you on our team.
-        </p>
+        </div>
 
-        <p className="text-darkPurple">
+        <div className="text-darkPurple">
           It is the place your true worth and identity is revealed, valued and
           expressed. We believe that every believer has a purpose to be
           fulfilled here on earth. Therefore, we equip believers to succeed in
           their chosen career, take dominion and leadership in order to be
           earthly relevant. This is our mandate and we a resolved to make it
           happen with you on our team.
-        </p>
+        </div>
       </div>
       {/* testimony LLc end */}
 
