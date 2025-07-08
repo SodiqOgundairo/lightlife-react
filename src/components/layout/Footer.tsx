@@ -19,7 +19,6 @@ const Footer = () => {
     <footer className="flex flex-col px-8 md:px-8 lg:px-36 py-10 gap-7 md:py-20 bg-darkPurple text-light">
       <div className="flex flex-col md:flex-row justify-between md:items-start gap-7 ">
         <div className="flex flex-1 flex-col gap-3">
-
           <CloudinaryImage
             imageKey="churchLogo"
             className="w-28 hover:scale-200 transform transition-all duration-300 ease-linear"
@@ -42,15 +41,15 @@ const Footer = () => {
             </li>
             <li className="list-item hover:text-gold hover:scale-105 hover:underline transition-all ease-linear">
               {" "}
-              <Link to={"/"}>Daily Light Devotional </Link>{" "}
+              <Link to={"/daily-light-devotional"}>Daily Light Devotional </Link>{" "}
             </li>
             <li className="list-item hover:text-gold hover:scale-105 hover:underline transition-all ease-linear">
               {" "}
-              <Link to={"/"}>Upcoming Programmes </Link>{" "}
+              <Link to={"/our-programmes"}>Upcoming Programmes </Link>{" "}
             </li>
             <li className="list-item hover:text-gold hover:scale-105 hover:underline transition-all ease-linear">
               {" "}
-              <Link to={"/"}>Sermons </Link>{" "}
+              <a href="/https://t.me/lightlifechurch" target="_blank">Sermons </a>
             </li>
             <li className="list-item hover:text-gold hover:scale-105 hover:underline transition-all ease-linear">
               {" "}

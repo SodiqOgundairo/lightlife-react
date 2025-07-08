@@ -2,6 +2,7 @@
 import MailingListComponent from "../components/common/MailingList"
 import { BsSoundwave } from "react-icons/bs"
 import CloudinaryImage from "../utils/ImageItem"
+import { Link } from "react-router-dom"
 const Testimony = () => {
   return (
     <main className="flex flex-col items-center justify-center">
@@ -19,12 +20,12 @@ const Testimony = () => {
             community—one testimony at a time. Your story could be next!
           </p>
 
-          <a
-            href=""
+          <Link
+            to="/share-testimony"
             className="btn-accent flex items-center gap-2 justify-center w-fit"
           >
             Share your testimony <BsSoundwave />{" "}
-          </a>
+          </Link>
         </div>
 
         <div className="flex flex-col gap-2">

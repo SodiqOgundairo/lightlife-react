@@ -93,10 +93,10 @@ const Home = () => {
             be blessed by this powerful devotionals.
           </p>
           <div className="flex flex-col lg:flex-row justify-start gap-2 md:gap-5">
-            <Link to="/dld" className="btn-pry w-fit">
+            <Link to="/daily-light-devotional" className="btn-pry w-fit">
               Read Today's Devotional
             </Link>
-            <Link to="/dld" className="btn-outline w-fit">
+            <Link to="/daily-light-devotional" className="btn-outline w-fit">
               Get DLD of the month
             </Link>
           </div>
@@ -167,12 +167,21 @@ const Home = () => {
           very glad to have you join us
         </p>
         <div className="flex flex-col lg:flex-row justify-center items-center gap-2 md:gap-5">
-          <Link to="/" className="btn-pry w-fit">
+          <a
+            href="#"
+            rel="noopener noreferrer"
+            className="btn-pry w-fit"
+          >
             Join our Community
-          </Link>
-          <Link to="/" className="btn-outline w-fit">
+          </a>
+          <a
+            href="https://t.me/lightlifechurch"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline w-fit"
+          >
             Get our Sermons
-          </Link>
+          </a>
         </div>
       </div>
 

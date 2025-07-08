@@ -20,7 +20,7 @@ const About = () => {
           </p>
 
           <a
-            href=""
+            href="https://www.youtube.com/@lightlifechurch" target="_blank"
             className="btn-accent flex items-center gap-2 justify-center w-fit"
           >
             Watch Online <CgMediaPodcast />{" "}

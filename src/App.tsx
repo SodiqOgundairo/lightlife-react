@@ -10,10 +10,18 @@ import Testimony from "./pages/Testimony";
 import NotFound from "./pages/PageNotFound";
 import AdminDashboard from "./pages/admin/Dashboard";
 import Give from "./pages/Give";
+import { useEffect } from "react";
 
 const App = () => {
   const location = useLocation();
   const isAdminPage = location.pathname.startsWith('/admin');
+
+    useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth" // Remove for instant scroll
+    });
+  }, [location.pathname]);
 
   const currentYear = new Date().getFullYear();
 
