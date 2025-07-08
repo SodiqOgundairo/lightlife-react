@@ -9,6 +9,7 @@ import DLD from "./pages/DLD";
 import Testimony from "./pages/Testimony";
 import NotFound from "./pages/PageNotFound";
 import AdminDashboard from "./pages/admin/Dashboard";
+import Give from "./pages/Give";
 
 const App = () => {
   const location = useLocation();
@@ -48,6 +49,7 @@ const App = () => {
           <Route path="/about-us" element={<About />} />
           <Route path="/daily-light-devotional" element={<DLD />} />
           <Route path="/testimonies" element={<Testimony />} />
+          <Route path="/support" element={<Give />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

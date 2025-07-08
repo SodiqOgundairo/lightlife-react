@@ -123,14 +123,9 @@ const DLD = () => {
         </div>
 
         <div className="rounded-lg bg-gradient-to-br from-gold-low to-[#976902] text-darkPurple flex flex-col gap-2 p-5 md:p-10">
-          <p className="font-bold text-xl">PRAYER</p>
+          <p className="font-bold text-xl">1-YEAR BIBLE READING PLAN</p>
           <p className="italic">
-            Heavenly Father, thank You for the promise of heaven. Thank You for
-            preparing a place for us where we will experience Your presence in
-            fullness. Help us to live with an eternal perspective, remembering
-            that this world is not our home. Strengthen our faith and help us to
-            share the hope of heaven with others. Thank You for the gift of
-            eternal life through Jesus. In His name, Amen.
+           Judges 10-11; Luke 9:1-36
           </p>
         </div>
       </div>
