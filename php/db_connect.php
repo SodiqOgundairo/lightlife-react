@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "lightlif_admin";
 $password = "!W&EgD5qbaaV~6w!";
-$dbname = "lightlife_church";
+$dbname = "lightlif_church";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
