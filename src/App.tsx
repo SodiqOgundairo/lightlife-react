@@ -23,7 +23,7 @@ const App = () => {
     });
   }, [location.pathname]);
 
-  const currentYear = new Date().getFullYear();
+  // const currentYear = new Date().getFullYear();
 
 
   const AdminHeader = () => (
@@ -31,17 +31,17 @@ const App = () => {
       <div className="container mx-auto">
         <Link to="/">
 
-          <img src="/LLC_Logo.png" alt="Living Light Christian Church Logo" className="h-10 md:h-12 w-auto" />
+          <img src="/LLC_Logo.png" alt="Lightlife church Logo" className="h-10 md:h-12 w-auto" />
         </Link>
       </div>
     </header>
   );
 
-  const AdminFooter = () => (
-    <footer className="bg-darkPurple text-light text-center p-4 text-xs md:text-sm">
-      <p>© {currentYear} Living Light Christian Church. All rights reserved.</p>
-    </footer>
-  );
+  // const AdminFooter = () => (
+  //   <footer className="bg-darkPurple text-light text-center p-4 text-xs md:text-sm">
+  //     <p>© {currentYear} Living Light Christian Church. All rights reserved.</p>
+  //   </footer>
+  // );
 
 
   return (
@@ -63,7 +63,8 @@ const App = () => {
         </Routes>
       </div>
 
-      {isAdminPage ? <AdminFooter /> : <Footer />}
+      {/* {isAdminPage ? <AdminFooter /> : <Footer />} */}
+      {isAdminPage ? '' : <Footer />}
     </>
   );
 }
