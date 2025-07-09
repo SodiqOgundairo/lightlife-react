@@ -103,8 +103,7 @@ const DLD: React.FC = () => {
         <div className="flex flex-col gap-2">
           {/* This image could be dynamic too if needed, or remain static */}
           <CloudinaryImage
-            publicId="lightlifechurchpage/dldpage/dldHeroBg" // Example publicId if CloudinaryImage takes publicId
-            // src="URL_IF_IT_TAKES_SRC" // Or src if it takes a full URL
+            imageKey="dldHeroBg" // Changed from publicId to imageKey, using existing key from Imagebank.tsx
             className="hover:scale-120 w-full md:w-7xl hover:rotate-3 px-2 md:px-0"
             alt="DLD Hero Background"
           />
