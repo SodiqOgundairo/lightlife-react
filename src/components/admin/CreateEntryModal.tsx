@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { DevotionalEntry } from '../../types';
+import { API_BASE_URL } from '../../config'; // Import API_BASE_URL
 
 interface CreateEntryModalProps {
   onClose: () => void;
@@ -41,7 +42,7 @@ const CreateEntryModal: React.FC<CreateEntryModalProps> = ({ onClose, onSave }) 
     formData.append('bibleReadingPlan', bibleReadingPlan);
 
     try {
-      const response = await fetch('/php/submit_dld_form.php', { // Adjusted path
+      const response = await fetch(`${API_BASE_URL}/submit_dld_form.php`, {
         method: 'POST',
         body: formData,
       });
