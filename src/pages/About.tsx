@@ -54,8 +54,7 @@ const About = () => {
           expressed. We believe that every believer has a purpose to be
           fulfilled here on earth. Therefore, we equip believers to succeed in
           their chosen career, take dominion and leadership in order to be
-          earthly relevant. This is our mandate and we a resolved to make it
-          happen with you on our team.
+          earthly relevant. This is our mandate, and we have resolved to make it happen with you on our team.
         </p>
       </div>
       {/* about LLc end */}
@@ -123,9 +122,7 @@ const About = () => {
             </p>
 
             <p>
-              He is happily married to Lade with whom they run their ministries
-              and businesses together. They are blessed with two beautiful
-              daughters, Zoe and Zion
+              He is happily married to Lade, with whom he runs their ministries and businesses together. They are blessed with three beautiful daughters, Zoe, Zion, and Zuriel
             </p>
           </div>
         </div>
