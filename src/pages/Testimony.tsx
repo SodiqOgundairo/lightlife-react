@@ -58,51 +58,16 @@ const Testimony = () => {
         
         <div className="bg-gradient-to-br from-gold to-purple text-light p-5 flex flex-col gap-3 rounded-md">
           <div className="flex justify-between items-center">
-            <p className="text-xl font-bold">Ibukunoluwa Iyiola</p>
+            <p className="text-xl font-bold">OLUWAKEMI BABATUNDE</p>
             <p className="text-dark bg-light px-4 py-1 font-bold  rounded-full">1</p>
           </div>
           <p>
-            LLC is a place for growing and grooming believers into maturity
-            through intentional teaching of the undiluted revelation of the
-            Scripture. We believe that when Christ is unveiled, Saints are
-            empowered. It is a place of equipping and empowering believers for
-            the end time global harvest and also preparing saints for the age to
-            come. We believe that our core responsibility is not to raise
-            members but disciples.
+           OLUWAKEMI BABATUNDE (Testimony of life Transformation) I'm this person that doesn't believe in the word of God because I don't see it come to reality in my life. Sometimes, I read the word of God that says 'for God knows the plans He has towards me' and I don't see any of His plans come to pass in my life but now I have come to the realisation that truly the word works. I used to believe that all marriages are the same, while growing up I decided I wasn't going to get married because I never saw a happy home and I didn't want that for myself. But my perspective about marriage changed when I met Pastor Juwon and Pastor Lade Owolabi. Spiritually I was not growing, I go to church but I wasn't burning for God. I couldn't pray for 1 hour but now I'm an Intercessor. Have grown in all areas of my life through the help of my Pastors.
           </p>  
         </div>
 
-        <div className="bg-gradient-to-br from-gold to-purple text-light p-5 flex flex-col gap-3 rounded-md">
-          <div className="flex justify-between items-center">
-            <p className="text-xl font-bold">Ibukunoluwa Iyiola</p>
-            <p className="text-dark bg-light px-4 py-1 font-bold  rounded-full">1</p>
-          </div>
-          <p>
-            LLC is a place for growing and grooming believers into maturity
-            through intentional teaching of the undiluted revelation of the
-            Scripture. We believe that when Christ is unveiled, Saints are
-            empowered. It is a place of equipping and empowering believers for
-            the end time global harvest and also preparing saints for the age to
-            come. We believe that our core responsibility is not to raise
-            members but disciples.
-          </p>  
-        </div>
 
-        <div className="bg-gradient-to-br from-gold to-purple text-light p-5 flex flex-col gap-3 rounded-md">
-          <div className="flex justify-between items-center">
-            <p className="text-xl font-bold">Ibukunoluwa Iyiola</p>
-            <p className="text-dark bg-light px-4 py-1 font-bold  rounded-full">1</p>
-          </div>
-          <p>
-            LLC is a place for growing and grooming believers into maturity
-            through intentional teaching of the undiluted revelation of the
-            Scripture. We believe that when Christ is unveiled, Saints are
-            empowered. It is a place of equipping and empowering believers for
-            the end time global harvest and also preparing saints for the age to
-            come. We believe that our core responsibility is not to raise
-            members but disciples.
-          </p>  
-        </div>
+
       </div>
       {/* testimony LLc end */}
  
