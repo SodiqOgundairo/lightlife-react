@@ -15,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 header('Content-Type: application/json');
 require_once 'db_connect.php'; // Establishes $conn
+require_once 'setup_table.php'; // Ensures table 'dld_entries' exists
 
 $response = ['success' => false, 'message' => '', 'data' => null];
 $entries = [];
