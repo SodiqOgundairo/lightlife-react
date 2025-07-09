@@ -131,9 +131,9 @@ const CreateEntryModal: React.FC<CreateEntryModalProps> = ({ onClose, onSave }) 
             <label htmlFor="bibleReadingPlan" className="block text-sm font-medium text-darkPurple">1-Year Bible Reading Plan</label>
             <input type="text" id="bibleReadingPlan" value={bibleReadingPlan} onChange={(e) => setBibleReadingPlan(e.target.value)} className="input-field mt-1 block w-full" />
           </div>
-+          {submitError && (
-+            <p className="text-sm text-red-600 bg-red-100 p-3 rounded-md border border-red-300">Error: {submitError}</p>
-+          )}
+          {submitError && (
+            <p className="text-sm text-red-600 bg-red-100 p-3 rounded-md border border-red-300">Error: {submitError}</p>
+          )}
           <div className="flex justify-end gap-4 pt-4">
              <button type="button" onClick={onClose} className="btn-outline px-6 py-2" disabled={isSubmitting}>Cancel</button>
              <button type="submit" className="btn-pry bg-gold hover:bg-gold-dark text-darkPurple font-semibold px-6 py-2" disabled={isSubmitting}>
