@@ -4,7 +4,8 @@ import { DevotionalEntry } from '../../types';
 import CreateEntryModal from '../../components/admin/CreateEntryModal';
 import ViewEntryModal from '../../components/admin/ViewEntryModal';
 import EditEntryModal from '../../components/admin/EditEntryModal';
-import DldManagement from '../../components/admin/DldManagement'; // Import DLD Management component
+import DldManagement from '../../components/admin/DldManagement';
+import { API_BASE_URL } from '../../config'; // Import API_BASE_URL
 
 
 const AdminDashboard: React.FC = () => {
@@ -33,7 +34,7 @@ const AdminDashboard: React.FC = () => {
         setIsLoadingDevotionals(true);
         setFetchDevotionalsError(null);
         try {
-          const response = await fetch('/php/get_dld_entries.php');
+          const response = await fetch(`${API_BASE_URL}/get_dld_entries.php`);
           if (!response.ok) {
             const errorData = await response.json().catch(() => ({ message: 'Failed to fetch devotionals. Server error.' }));
             throw new Error(errorData.message || `Server error: ${response.status}`);
@@ -86,7 +87,7 @@ const AdminDashboard: React.FC = () => {
         const formData = new FormData();
         formData.append('id', entryId);
 
-        const response = await fetch('/php/delete_dld_entry.php', {
+        const response = await fetch(`${API_BASE_URL}/delete_dld_entry.php`, {
           method: 'POST',
           body: formData,
         });

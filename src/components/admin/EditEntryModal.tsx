@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DevotionalEntry } from '../../types';
+import { API_BASE_URL } from '../../config'; // Import API_BASE_URL
 
 interface EditEntryModalProps {
   entry: DevotionalEntry | null;
@@ -79,7 +80,7 @@ const EditEntryModal: React.FC<EditEntryModalProps> = ({ entry, onClose, onSave 
     formData.append('bibleReadingPlan', bibleReadingPlan);
 
     try {
-      const response = await fetch('/php/update_dld_entry.php', {
+      const response = await fetch(`${API_BASE_URL}/update_dld_entry.php`, {
         method: 'POST',
         body: formData,
       });
