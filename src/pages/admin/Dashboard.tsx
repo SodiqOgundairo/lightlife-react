@@ -11,8 +11,12 @@ const AdminDashboard: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [error, setError] = useState(''); // Login error
+
+  // Devotionals state
   const [devotionals, setDevotionals] = useState<DevotionalEntry[]>([]);
+  const [isLoadingDevotionals, setIsLoadingDevotionals] = useState(true);
+  const [fetchDevotionalsError, setFetchDevotionalsError] = useState<string | null>(null);
 
   // Modals state
   const [showCreateModal, setShowCreateModal] = useState(false);
@@ -25,7 +29,29 @@ const AdminDashboard: React.FC = () => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      setDevotionals(DUMMY_DEVOTIONALS);
+      const fetchDevotionals = async () => {
+        setIsLoadingDevotionals(true);
+        setFetchDevotionalsError(null);
+        try {
+          const response = await fetch('/php/get_dld_entries.php');
+          if (!response.ok) {
+            const errorData = await response.json().catch(() => ({ message: 'Failed to fetch devotionals. Server error.' }));
+            throw new Error(errorData.message || `Server error: ${response.status}`);
+          }
+          const result = await response.json();
+          if (result.success) {
+            setDevotionals(result.data || []); // Ensure data is an array
+          } else {
+            throw new Error(result.message || 'Failed to fetch devotionals.');
+          }
+        } catch (err) {
+          setFetchDevotionalsError(err instanceof Error ? err.message : String(err));
+          setDevotionals([]); // Clear existing devotionals on error
+        } finally {
+          setIsLoadingDevotionals(false);
+        }
+      };
+      fetchDevotionals();
     }
   }, [isLoggedIn]);
 
@@ -39,11 +65,9 @@ const AdminDashboard: React.FC = () => {
     }
   };
 
-  const handleCreateEntry = (newEntryData: Omit<DevotionalEntry, 'id'>) => {
-    const newEntry: DevotionalEntry = {
-      ...newEntryData,
-      id: Date.now().toString(), // Simple unique ID for now
-    };
+  // Called by CreateEntryModal's onSave, which now receives the full entry with ID from backend
+  const handleCreateEntry = (newEntry: DevotionalEntry) => {
+    // Add the new entry to the beginning of the list
     setDevotionals(prevDevotionals => [newEntry, ...prevDevotionals]);
     setShowCreateModal(false);
   };
@@ -56,9 +80,34 @@ const AdminDashboard: React.FC = () => {
     setSelectedEntry(null);
   };
 
-  const handleDeleteEntry = (entryId: string) => {
+  const handleDeleteEntry = async (entryId: string) => {
     if (window.confirm('Are you sure you want to delete this devotional entry? This action cannot be undone.')) {
-      setDevotionals(prevDevotionals => prevDevotionals.filter(entry => entry.id !== entryId));
+      try {
+        const formData = new FormData();
+        formData.append('id', entryId);
+
+        const response = await fetch('/php/delete_dld_entry.php', {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({ message: 'An unknown error occurred during deletion.' }));
+          throw new Error(errorData.message || `Server error: ${response.status}`);
+        }
+
+        const result = await response.json();
+
+        if (result.success) {
+          setDevotionals(prevDevotionals => prevDevotionals.filter(entry => entry.id !== entryId));
+          alert(result.message || 'Entry deleted successfully.'); // Or use a better notification
+        } else {
+          throw new Error(result.message || 'Failed to delete entry from server.');
+        }
+      } catch (error) {
+        console.error('Delete error:', error);
+        alert(`Error deleting entry: ${error instanceof Error ? error.message : String(error)}`);
+      }
     }
   };
   
@@ -172,13 +221,19 @@ const AdminDashboard: React.FC = () => {
         <main className="flex-1 p-6 md:p-10">
           <div className="container mx-auto">
             {activeSection === 'dld' && (
-              <DldManagement
-                devotionals={devotionals}
-                onShowCreateModal={() => setShowCreateModal(true)}
-                onShowViewModal={(entry) => { setSelectedEntry(entry); setShowViewModal(true); }}
-                onShowEditModal={(entry) => { setSelectedEntry(entry); setShowEditModal(true); }}
-                onDeleteEntry={handleDeleteEntry}
-              />
+              <>
+                {isLoadingDevotionals && <p className="text-center text-gray-600 py-4">Loading devotionals...</p>}
+                {fetchDevotionalsError && <p className="text-center text-red-600 bg-red-100 p-3 rounded-md border border-red-300">Error: {fetchDevotionalsError}</p>}
+                {!isLoadingDevotionals && !fetchDevotionalsError && (
+                  <DldManagement
+                    devotionals={devotionals}
+                    onShowCreateModal={() => setShowCreateModal(true)}
+                    onShowViewModal={(entry) => { setSelectedEntry(entry); setShowViewModal(true); }}
+                    onShowEditModal={(entry) => { setSelectedEntry(entry); setShowEditModal(true); }}
+                    onDeleteEntry={handleDeleteEntry} // This will be updated later
+                  />
+                )}
+              </>
             )}
             {activeSection === 'users' && (
               <div>

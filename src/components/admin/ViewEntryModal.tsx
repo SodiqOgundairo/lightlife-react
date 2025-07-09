@@ -9,6 +9,9 @@ interface ViewEntryModalProps {
 const ViewEntryModal: React.FC<ViewEntryModalProps> = ({ entry, onClose }) => {
   if (!entry) return null;
 
+  const FALLBACK_IMAGE_URL = 'https://res.cloudinary.com/dmxfjy079/image/upload/LLCImageRepo/Images/Img/mxqvbx5cx4apnhhwn63k';
+  const displayImageUrl = entry.image_url ? entry.image_url : FALLBACK_IMAGE_URL;
+
   return (
     <div className="fixed inset-0 bg-gray-900/30 backdrop-blur-sm flex justify-center items-center p-4 z-50">
       <div className="bg-light p-6 md:p-8 rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
@@ -23,12 +26,22 @@ const ViewEntryModal: React.FC<ViewEntryModalProps> = ({ entry, onClose }) => {
             <p className="text-gray-700">{new Date(entry.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</p>
           </div>
 
-          {entry.image_url && (
-            <div>
-              <p className="text-sm font-medium text-darkPurple">Image</p>
-              <img src={entry.image_url} alt={entry.title} className="mt-1 rounded-md max-h-60 w-auto shadow-sm" />
-            </div>
-          )}
+          {/* Always render the image container, use fallback if entry.image_url is empty */}
+          <div>
+            <p className="text-sm font-medium text-darkPurple">Image</p>
+            <img
+              src={displayImageUrl}
+              alt={entry.title || 'Devotional image'}
+              className="mt-1 rounded-md max-h-60 w-auto shadow-sm"
+              onError={(e) => {
+                // Optional: Handle if even the fallback image fails to load, though unlikely for a fixed URL
+                const target = e.target as HTMLImageElement;
+                target.onerror = null; // Prevent infinite loop if fallback itself is broken
+                // target.src = 'path/to/a/very/default/placeholder.png';
+                console.error("Failed to load image:", displayImageUrl);
+              }}
+            />
+          </div>
 
           <div>
             <p className="text-sm font-medium text-darkPurple">Memory Verse</p>

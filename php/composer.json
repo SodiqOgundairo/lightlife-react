@@ -1,0 +1,12 @@
+{
+    "name": "lightlife-church/php-backend",
+    "description": "PHP backend services for LightLife Church.",
+    "type": "project",
+    "require": {},
+    "authors": [
+        {
+            "name": "AI Agent Jules",
+            "email": "ai@example.com"
+        }
+    ]
+}
