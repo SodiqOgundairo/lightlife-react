@@ -19,40 +19,60 @@ require_once 'db_connect.php'; // Establishes $conn
 $response = ['success' => false, 'message' => '', 'data' => null];
 $entries = [];
 
-// Check if an ID is provided to fetch a specific entry
+// Check for parameters: id, date, or all
 $entryId = $_GET['id'] ?? null;
+$entryDate = $_GET['date'] ?? null;
 
-if ($entryId !== null) {
+if ($entryId !== null) { // Fetch by ID (highest precedence)
     if (!filter_var($entryId, FILTER_VALIDATE_INT)) {
         $response['message'] = 'Invalid entry ID provided.';
-        echo json_encode($response);
-        $conn->close();
-        exit;
-    }
-    $stmt = $conn->prepare("SELECT id, title, entry_date, image_url, memory_verse_text, memory_verse_reference, study_bible_reference, devotional_text, prayer, bible_reading_plan_text, created_at, updated_at FROM dld_entries WHERE id = ?");
-    if ($stmt) {
-        $stmt->bind_param("i", $entryId);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if ($entry = $result->fetch_assoc()) {
-            $entry['id'] = (string)$entry['id']; // Cast id to string
-            $entries[] = $entry; // Keep it as an array for consistency, even if single
-            $response['success'] = true;
-        } else {
-            $response['message'] = 'Entry not found.';
-        }
-        $stmt->close();
     } else {
-        $response['message'] = 'Error preparing statement: ' . $conn->error;
+        $stmt = $conn->prepare("SELECT id, title, entry_date, image_url, memory_verse_text, memory_verse_reference, study_bible_reference, devotional_text, prayer, bible_reading_plan_text, created_at, updated_at FROM dld_entries WHERE id = ?");
+        if ($stmt) {
+            $stmt->bind_param("i", $entryId);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if ($entry = $result->fetch_assoc()) {
+                $entry['id'] = (string)$entry['id'];
+                $entries[] = $entry;
+                $response['success'] = true;
+            } else {
+                $response['message'] = 'Entry not found with ID: ' . $entryId;
+            }
+            $stmt->close();
+        } else {
+            $response['message'] = 'Error preparing statement for ID fetch: ' . $conn->error;
+        }
     }
-} else {
-    // Fetch all entries, ordered by date descending
+} elseif ($entryDate !== null) { // Fetch by Date
+    // Validate date format (YYYY-MM-DD)
+    if (!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $entryDate)) {
+        $response['message'] = 'Invalid date format provided. Please use YYYY-MM-DD.';
+    } else {
+        $stmt = $conn->prepare("SELECT id, title, entry_date, image_url, memory_verse_text, memory_verse_reference, study_bible_reference, devotional_text, prayer, bible_reading_plan_text, created_at, updated_at FROM dld_entries WHERE entry_date = ? ORDER BY id DESC LIMIT 1"); // Get the latest if multiple for a date
+        if ($stmt) {
+            $stmt->bind_param("s", $entryDate);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if ($entry = $result->fetch_assoc()) {
+                $entry['id'] = (string)$entry['id'];
+                $entries[] = $entry; // Keep as array for consistency, though expecting one
+                $response['success'] = true;
+            } else {
+                $response['message'] = 'No entry found for date: ' . $entryDate;
+                // $response['success'] remains false, but data will be an empty array.
+            }
+            $stmt->close();
+        } else {
+            $response['message'] = 'Error preparing statement for date fetch: ' . $conn->error;
+        }
+    }
+} else { // Fetch all entries
     $sql = "SELECT id, title, entry_date, image_url, memory_verse_text, memory_verse_reference, study_bible_reference, devotional_text, prayer, bible_reading_plan_text, created_at, updated_at FROM dld_entries ORDER BY entry_date DESC, id DESC";
     $result = $conn->query($sql);
-
     if ($result) {
         while ($row = $result->fetch_assoc()) {
-            $row['id'] = (string)$row['id']; // Cast id to string
+            $row['id'] = (string)$row['id'];
             $entries[] = $row;
         }
         $response['success'] = true;
@@ -60,11 +80,11 @@ if ($entryId !== null) {
             $response['message'] = 'No entries found.';
         }
     } else {
-        $response['message'] = 'Error fetching entries: ' . $conn->error;
+        $response['message'] = 'Error fetching all entries: ' . $conn->error;
     }
 }
 
-$response['data'] = $entries;
+$response['data'] = $entries; // Ensure data is always an array
 echo json_encode($response);
 
 $conn->close();
