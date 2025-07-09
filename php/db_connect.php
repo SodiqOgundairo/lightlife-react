@@ -1,5 +1,5 @@
 <?php
-$servername = "lightlifechurch.com";
+$servername = "localhost";
 $username = "lightlif_admin";
 $password = "!W&EgD5qbaaV~6w!";
 $dbname = "lightlife_church";
