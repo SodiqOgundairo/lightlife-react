@@ -1,6 +1,6 @@
 <?php
 
-$allowedOrigins = ['https://dev.lightlifechurch.com', 'https://lightlifechurch.com'];
+$allowedOrigins = ['https://dev.lightlifechurch.com', 'https://lightlifechurch.com', 'http://http://localhost:5173/'];
 if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowedOrigins)) {
     header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
 }
@@ -28,7 +28,7 @@ if ($entryId !== null) { // Fetch by ID (highest precedence)
     if (!filter_var($entryId, FILTER_VALIDATE_INT)) {
         $response['message'] = 'Invalid entry ID provided.';
     } else {
-        $stmt = $conn->prepare("SELECT id, title, entry_date, image_url, memory_verse_text, memory_verse_reference, study_bible_reference, devotional_text, prayer, bible_reading_plan_text, created_at, updated_at FROM dld_entries WHERE id = ?");
+        $stmt = $conn->prepare("SELECT id, title, entry_date, image_url, memory_verse_text, memory_verse_reference, study_bible_reference, devotional_text, action_category, action_content, bible_reading_plan_text, created_at, updated_at FROM dld_entries WHERE id = ?");
         if ($stmt) {
             $stmt->bind_param("i", $entryId);
             $stmt->execute();
@@ -50,7 +50,7 @@ if ($entryId !== null) { // Fetch by ID (highest precedence)
     if (!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $entryDate)) {
         $response['message'] = 'Invalid date format provided. Please use YYYY-MM-DD.';
     } else {
-        $stmt = $conn->prepare("SELECT id, title, entry_date, image_url, memory_verse_text, memory_verse_reference, study_bible_reference, devotional_text, prayer, bible_reading_plan_text, created_at, updated_at FROM dld_entries WHERE entry_date = ? ORDER BY id DESC LIMIT 1"); // Get the latest if multiple for a date
+        $stmt = $conn->prepare("SELECT id, title, entry_date, image_url, memory_verse_text, memory_verse_reference, study_bible_reference, devotional_text, action_category, action_content, bible_reading_plan_text, created_at, updated_at FROM dld_entries WHERE entry_date = ? ORDER BY id DESC LIMIT 1"); // Get the latest if multiple for a date
         if ($stmt) {
             $stmt->bind_param("s", $entryDate);
             $stmt->execute();
@@ -69,7 +69,7 @@ if ($entryId !== null) { // Fetch by ID (highest precedence)
         }
     }
 } else { // Fetch all entries
-    $sql = "SELECT id, title, entry_date, image_url, memory_verse_text, memory_verse_reference, study_bible_reference, devotional_text, prayer, bible_reading_plan_text, created_at, updated_at FROM dld_entries ORDER BY entry_date DESC, id DESC";
+    $sql = "SELECT id, title, entry_date, image_url, memory_verse_text, memory_verse_reference, study_bible_reference, devotional_text, action_category, action_content, bible_reading_plan_text, created_at, updated_at FROM dld_entries ORDER BY entry_date DESC, id DESC";
     $result = $conn->query($sql);
     if ($result) {
         while ($row = $result->fetch_assoc()) {

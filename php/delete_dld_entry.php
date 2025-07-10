@@ -1,6 +1,6 @@
 <?php
 
-$allowedOrigins = ['https://dev.lightlifechurch.com', 'https://lightlifechurch.com'];
+$allowedOrigins = ['https://dev.lightlifechurch.com', 'https://lightlifechurch.com', 'http://http://localhost:5173/'];
 if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowedOrigins)) {
     header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
 }

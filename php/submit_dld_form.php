@@ -1,6 +1,6 @@
 <?php
 
-$allowedOrigins = ['https://dev.lightlifechurch.com', 'https://lightlifechurch.com'];
+$allowedOrigins = ['https://dev.lightlifechurch.com', 'https://lightlifechurch.com','http://http://localhost:5173/'];
 if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowedOrigins)) {
     header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
 }
@@ -30,7 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $memory_verse_reference = $_POST['memoryVerseRef'] ?? null;
     $study_bible_reference = $_POST['studyBibleRef'] ?? null;
     $devotional_text = $_POST['devotionalText'] ?? null;
-    $prayer = $_POST['prayer'] ?? null;
+    $action_category = $_POST['action_category'] ?? null;
+    $action_content = $_POST['action_content'] ?? null;
     $bible_reading_plan_text = $_POST['bibleReadingPlan'] ?? null;
 
     $image_url = null; // Initialize image_url
@@ -78,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $stmt = $conn->prepare("INSERT INTO dld_entries (title, entry_date, image_url, memory_verse_text, memory_verse_reference, study_bible_reference, devotional_text, prayer, bible_reading_plan_text) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO dld_entries (title, entry_date, image_url, memory_verse_text, memory_verse_reference, study_bible_reference, devotional_text, action_category, action_content, bible_reading_plan_text) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
     if ($stmt === false) {
         $response['message'] = 'Database prepare failed: ' . $conn->error;
@@ -94,7 +95,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $memory_verse_reference,
         $study_bible_reference,
         $devotional_text,
-        $prayer,
+        $action_category,
+        $action_content,
         $bible_reading_plan_text
     );
 
