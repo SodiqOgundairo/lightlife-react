@@ -66,7 +66,7 @@ const Home = () => {
                 To Help Saints Mature and Fulfil God’s Purpose
               </li>
               <li className="list-item">
-                To make disciple for Christ in Nations
+                To make disciples for Christ in Nations
               </li>
             </ul>
           </div>
@@ -74,9 +74,7 @@ const Home = () => {
           <div className="rounded-lg shadow-lg shadow-gold/20 bg-gold p-5 text-darkPurple flex flex-col md:flex-1 gap-3 justify-end h-68 md:h-full hover:scale-105 hover:bg-transparent hover:border-2 border-gold hover:text-gold hover:shadow-xl transition-all duration-300 ease-linear">
             <p className="text-2xl md:text-4xl font-bold"> Our Mission</p>
             <p className="">
-              {" "}
-              To assimilate citizens (believers) into the God’s Kingdom
-              (church), Empower them and Release them for Service (ministry)
+             To assimilate citizens (believers) into God’s Kingdom (church), Empower them and Release them for Service (ministry)
             </p>
           </div>
         </div>
@@ -92,7 +90,7 @@ const Home = () => {
             the right words as inspired by the Holy Spirit. You will definitely
             be blessed by this powerful devotionals.
           </p>
-          <div className="flex flex-col lg:flex-row justify-start gap-2 md:gap-5">
+          <div className="flex flex-col md:flex-col lg:flex-row justify-start gap-2 md:gap-5">
             <Link to="/daily-light-devotional" className="btn-pry w-fit">
               Read Today's Devotional
             </Link>
@@ -161,10 +159,7 @@ const Home = () => {
         </div>
 
         <p className="italic text-sm md:text-base text-center">
-          How you start your day determines the outcome. Start your day with LLC
-          is a known house of bread. Do join any of our services and be sure you
-          will be blessed, In case you do not have a spiritual family, we are
-          very glad to have you join us
+          Where you’re planted determines how you grow. Lightlife Church is a known house of bread, a place where lives are nourished and destinies are shaped. Join any of our services and be sure you'll be blessed. And if you don't have a spiritual family yet, we’ll be glad to welcome you home
         </p>
         <div className="flex flex-col lg:flex-row justify-center items-center gap-2 md:gap-5">
           <a

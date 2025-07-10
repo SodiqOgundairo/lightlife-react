@@ -63,8 +63,8 @@ const Header = () => {
             ))}
           </nav>
 
-          <Link to={"/support"} className="btn-pry hidden md:block ">
-            Support
+          <Link to={"/partner-with-us"} className="btn-pry hidden md:block ">
+            Partner with Us
           </Link>
 
           <button
@@ -96,8 +96,8 @@ const Header = () => {
                   {item.name}
                 </NavLink>
               ))}
-              <Link to="/" className="btn-pry">
-                Support
+              <Link to="/partner-with-us" className="btn-pry">
+                Partner with Us
               </Link>
             </div>
           </div>

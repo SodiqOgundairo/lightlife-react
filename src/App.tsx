@@ -57,7 +57,7 @@ const App = () => {
           <Route path="/about-us" element={<About />} />
           <Route path="/daily-light-devotional" element={<DLD />} />
           <Route path="/testimonies" element={<Testimony />} />
-          <Route path="/support" element={<Give />} />
+          <Route path="/partner-with-us" element={<Give />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
