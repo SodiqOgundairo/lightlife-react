@@ -75,13 +75,13 @@ const ViewEntryModal: React.FC<ViewEntryModalProps> = ({ entry, onClose }) => {
             <p className="text-gray-700">{entry.bible_reading_plan_text}</p>
           </div>
 
+        )};
           <div className="flex justify-end pt-4">
             <button type="button" onClick={onClose} className="btn-outline px-6 py-2">Close</button>
-          </div>
+          </div>   
         </div>
       </div>
     </div>
-  );
-};
-
-export default ViewEntryModal;
+)
+}
+export default ViewEntryModal
