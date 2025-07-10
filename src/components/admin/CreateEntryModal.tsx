@@ -49,7 +49,7 @@ const CreateEntryModal: React.FC<CreateEntryModalProps> = ({ onClose, onSave }) 
       const response = await fetch(`${API_BASE_URL}/submit_dld_form.php`, {
         method: 'POST',
         body: formData,
-      });
+      }); 
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({ message: 'An unknown error occurred.' }));
@@ -62,8 +62,8 @@ const CreateEntryModal: React.FC<CreateEntryModalProps> = ({ onClose, onSave }) 
         // Call original onSave with the full entry including the new ID and image_url from the server
         onSave({
           id: result.data.id.toString(),
-          entry_date: date, // Map local 'date' state to 'entry_date' for the DevotionalEntry object
           title,
+          entry_date: date, // Map local 'date' state to 'entry_date' for the DevotionalEntry object
           image_url: result.data.image_url || '', // Use image_url from server response
           memory_verse_text: memoryVerseText,
           memory_verse_reference: memoryVerseRef,
