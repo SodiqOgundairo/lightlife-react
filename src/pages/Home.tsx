@@ -140,12 +140,6 @@ const Home = () => {
           />
 
           <CloudinaryImage
-            imageKey="prayerParty"
-            className="rounded-md hover:scale-110 transition-all duration-300 hover:shadow-xl ease-linear flex-1 w-full"
-            alt="prayer party"
-          />
-
-          <CloudinaryImage
             imageKey="luyd"
             className="rounded-md hover:scale-110 transition-all duration-300 hover:shadow-xl ease-linear flex-1 w-full"
             alt="Light Up Your Day"
