@@ -134,8 +134,8 @@ const DLD: React.FC = () => {
                 <div className="flex flex-col md:flex-row gap-5 justify-between mt-3">
                   <div className="flex flex-col gap-2">
                     <p className="text-xl font-medium">Memory Verse</p>
-                    <p className="italic">"{currentDevotional.memory_verse_text}"</p>
-                    <p className="text-lg font-bold italic">{currentDevotional.memory_verse_reference}</p>
+                    <p className="italic font-bold text-lg">"{currentDevotional.memory_verse_text}"</p>
+                    <p className=" italic">{currentDevotional.memory_verse_reference}</p>
                   </div>
                   {currentDevotional.study_bible_reference && (
                     <div className="flex flex-col w-full">
