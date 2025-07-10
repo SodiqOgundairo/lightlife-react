@@ -23,7 +23,7 @@ const ViewEntryModal: React.FC<ViewEntryModalProps> = ({ entry, onClose }) => {
         <div className="space-y-4">
           <div>
             <p className="text-sm font-medium text-darkPurple">Date</p>
-            <p className="text-gray-700">{new Date(entry.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</p>
+            <p className="text-gray-700">{new Date(entry.entry_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</p>
           </div>
 
           {/* Always render the image container, use fallback if entry.image_url is empty */}
@@ -61,13 +61,17 @@ const ViewEntryModal: React.FC<ViewEntryModalProps> = ({ entry, onClose }) => {
             </div>
           </div>
 
-          <div>
-            <p className="text-sm font-medium text-darkPurple">Prayer</p>
-            <p className="italic text-gray-700 whitespace-pre-wrap">{entry.prayer}</p>
-          </div>
+          {/* Display Action Category and Content */}
+          {entry.action_category && entry.action_content && (
+            <div className="rounded-lg bg-gradient-to-br from-purple-light to-darkPurple text-light flex flex-col gap-2 p-5 md:p-6 shadow-inner">
+              <p className="font-bold text-xl uppercase">{entry.action_category}</p>
+              <p className="italic whitespace-pre-wrap">{entry.action_content}</p>
+            </div>
+          )}
 
-          <div>
-            <p className="text-sm font-medium text-darkPurple">1-Year Bible Reading Plan</p>
+          {entry.bible_reading_plan_text && (
+          <div className="rounded-lg bg-gradient-to-br from-gold-low to-[#976902] text-darkPurple flex flex-col gap-2 p-5 md:p-6 shadow-inner">
+            <p className="font-bold text-xl">1-Year Bible Reading Plan</p>
             <p className="text-gray-700">{entry.bible_reading_plan_text}</p>
           </div>
 

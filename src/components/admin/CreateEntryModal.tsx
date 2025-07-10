@@ -16,7 +16,9 @@ const CreateEntryModal: React.FC<CreateEntryModalProps> = ({ onClose, onSave }) 
   const [memoryVerseRef, setMemoryVerseRef] = useState('');
   const [studyBibleRef, setStudyBibleRef] = useState('');
   const [devotionalText, setDevotionalText] = useState('');
-  const [prayer, setPrayer] = useState('');
+  // const [prayer, setPrayer] = useState(''); // Removed
+  const [actionCategory, setActionCategory] = useState('Action Point'); // Default value
+  const [actionContent, setActionContent] = useState('');
   const [bibleReadingPlan, setBibleReadingPlan] = useState('');
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -38,7 +40,9 @@ const CreateEntryModal: React.FC<CreateEntryModalProps> = ({ onClose, onSave }) 
     formData.append('memoryVerseRef', memoryVerseRef);
     formData.append('studyBibleRef', studyBibleRef);
     formData.append('devotionalText', devotionalText);
-    formData.append('prayer', prayer);
+    // formData.append('prayer', prayer); // Removed
+    formData.append('actionCategory', actionCategory);
+    formData.append('actionContent', actionContent);
     formData.append('bibleReadingPlan', bibleReadingPlan);
 
     try {
@@ -58,14 +62,15 @@ const CreateEntryModal: React.FC<CreateEntryModalProps> = ({ onClose, onSave }) 
         // Call original onSave with the full entry including the new ID and image_url from the server
         onSave({
           id: result.data.id.toString(),
-          date,
+          entry_date: date, // Map local 'date' state to 'entry_date' for the DevotionalEntry object
           title,
           image_url: result.data.image_url || '', // Use image_url from server response
           memory_verse_text: memoryVerseText,
           memory_verse_reference: memoryVerseRef,
           study_bible_reference: studyBibleRef,
           devotional_text: devotionalText,
-          prayer,
+          action_category: actionCategory, // Added
+          action_content: actionContent, // Added
           bible_reading_plan_text: bibleReadingPlan,
         });
         // onClose(); // Optionally close modal on successful save
@@ -123,10 +128,40 @@ const CreateEntryModal: React.FC<CreateEntryModalProps> = ({ onClose, onSave }) 
             <label htmlFor="devotionalText" className="block text-sm font-medium text-darkPurple">Devotional Text</label>
             <textarea id="devotionalText" value={devotionalText} onChange={(e) => setDevotionalText(e.target.value)} rows={10} required className="input-field mt-1 block w-full"></textarea>
           </div>
+
+          {/* Action Category Radio Buttons */}
           <div>
-            <label htmlFor="prayer" className="block text-sm font-medium text-darkPurple">Prayer</label>
-            <textarea id="prayer" value={prayer} onChange={(e) => setPrayer(e.target.value)} rows={4} className="input-field mt-1 block w-full"></textarea>
+            <label className="block text-sm font-medium text-darkPurple mb-1">Action Category</label>
+            <div className="flex space-x-2">
+              {['Action Point', 'Prayer', 'Meditation'].map((category) => (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => setActionCategory(category)}
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-colors
+                    ${actionCategory === category
+                      ? 'bg-purple text-white shadow-md'
+                      : 'bg-gray-100 text-gray-700 border border-gray-300 hover:bg-gray-200'
+                    }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
           </div>
+
+          <div>
+            <label htmlFor="actionContent" className="block text-sm font-medium text-darkPurple">{actionCategory} Content</label>
+            <textarea
+              id="actionContent"
+              value={actionContent}
+              onChange={(e) => setActionContent(e.target.value)}
+              rows={4}
+              className="input-field mt-1 block w-full"
+              placeholder={`Enter text for ${actionCategory.toLowerCase()}...`}
+            />
+          </div>
+
           <div>
             <label htmlFor="bibleReadingPlan" className="block text-sm font-medium text-darkPurple">1-Year Bible Reading Plan</label>
             <input type="text" id="bibleReadingPlan" value={bibleReadingPlan} onChange={(e) => setBibleReadingPlan(e.target.value)} className="input-field mt-1 block w-full" />

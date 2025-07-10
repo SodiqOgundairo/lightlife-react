@@ -155,10 +155,11 @@ const DLD: React.FC = () => {
               {currentDevotional.devotional_text}
             </div>
 
-            {currentDevotional.prayer && (
+            {/* Display Action Category and Content */}
+            {currentDevotional.action_category && currentDevotional.action_content && (
               <div className="mt-8 rounded-lg bg-gradient-to-br from-purple-light to-darkPurple text-light flex flex-col gap-2 p-5 md:p-10 shadow-md">
-                <p className="font-bold text-xl">PRAYER</p>
-                <p className="italic whitespace-pre-wrap">{currentDevotional.prayer}</p>
+                <p className="font-bold text-xl uppercase">{currentDevotional.action_category}</p>
+                <p className="italic whitespace-pre-wrap">{currentDevotional.action_content}</p>
               </div>
             )}
 
