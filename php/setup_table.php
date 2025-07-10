@@ -12,8 +12,8 @@ $sql = "CREATE TABLE IF NOT EXISTS $tableName (
     memory_verse_reference VARCHAR(255),
     study_bible_reference VARCHAR(255),
     devotional_text LONGTEXT NOT NULL,
-    action_category TEXT,
-    action_content TEXT,
+    action_category VARCHAR(255),
+    action_content VARCHAR(1000),
     bible_reading_plan_text VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP

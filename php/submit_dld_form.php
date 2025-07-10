@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $stmt = $conn->prepare("INSERT INTO dld_entries (title, entry_date, image_url, memory_verse_text, memory_verse_reference, study_bible_reference, devotional_text, action_category, action_content, bible_reading_plan_text) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO dld_entries (title, entry_date, image_url, memory_verse_text, memory_verse_reference, study_bible_reference, devotional_text, action_category, action_content, bible_reading_plan_text) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
     if ($stmt === false) {
         $response['message'] = 'Database prepare failed: ' . $conn->error;
@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $stmt->bind_param("sssssssss",
+    $stmt->bind_param("ssssssssss",
         $title,
         $entry_date,
         $image_url, // This will be the Cloudinary URL or null
