@@ -17,23 +17,10 @@ const EditEntryModal: React.FC<EditEntryModalProps> = ({ entry, onClose, onSave 
   const [memoryVerseRef, setMemoryVerseRef] = useState('');
   const [studyBibleRef, setStudyBibleRef] = useState('');
   const [devotionalText, setDevotionalText] = useState('');
-  const [prayer, setPrayer] = useState('');
+  // const [prayer, setPrayer] = useState(''); // Removed
+  const [actionCategory, setActionCategory] = useState('Action Point'); // Default
+  const [actionContent, setActionContent] = useState('');
   const [bibleReadingPlan, setBibleReadingPlan] = useState('');
-
-  useEffect(() => {
-    if (entry) {
-      setTitle(entry.title);
-      setDate(entry.date); // Assumes date is in 'YYYY-MM-DD'
-      setImageUrl(entry.image_url);
-      setNewImageFile(null); // Clear any previously selected new file
-      setMemoryVerseText(entry.memory_verse_text);
-      setMemoryVerseRef(entry.memory_verse_reference);
-      setStudyBibleRef(entry.study_bible_reference);
-      setDevotionalText(entry.devotional_text);
-      setPrayer(entry.prayer);
-      setBibleReadingPlan(entry.bible_reading_plan_text);
-    }
-  }, [entry]);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -41,15 +28,17 @@ const EditEntryModal: React.FC<EditEntryModalProps> = ({ entry, onClose, onSave 
   useEffect(() => {
     if (entry) {
       setTitle(entry.title);
-      setDate(entry.date);
+      setDate(entry.entry_date); // Use entry_date here
       setImageUrl(entry.image_url);
+      setNewImageFile(null); // Clear any previously selected new file for upload
       setMemoryVerseText(entry.memory_verse_text);
       setMemoryVerseRef(entry.memory_verse_reference);
       setStudyBibleRef(entry.study_bible_reference);
       setDevotionalText(entry.devotional_text);
-      setPrayer(entry.prayer);
+      setActionCategory(entry.action_category || 'Action Point'); // Set from entry or default
+      setActionContent(entry.action_content || ''); // Set from entry or default
       setBibleReadingPlan(entry.bible_reading_plan_text);
-      setSubmitError(null); // Reset error when entry changes
+      setSubmitError(null); // Reset error when entry changes or modal opens
     }
   }, [entry]);
 
@@ -76,7 +65,9 @@ const EditEntryModal: React.FC<EditEntryModalProps> = ({ entry, onClose, onSave 
     formData.append('memoryVerseRef', memoryVerseRef);
     formData.append('studyBibleRef', studyBibleRef);
     formData.append('devotionalText', devotionalText);
-    formData.append('prayer', prayer);
+    // formData.append('prayer', prayer); // Removed
+    formData.append('actionCategory', actionCategory);
+    formData.append('actionContent', actionContent);
     formData.append('bibleReadingPlan', bibleReadingPlan);
 
     try {
@@ -96,7 +87,7 @@ const EditEntryModal: React.FC<EditEntryModalProps> = ({ entry, onClose, onSave 
         const updatedEntryFromServer: DevotionalEntry = {
           ...entry,
           id: result.data.id ? String(result.data.id) : entry.id,
-          date,
+          entry_date: date, // Map local 'date' state to 'entry_date'
           title,
           // Use image_url from server response (could be new, old, or empty if cleared/upload failed)
           image_url: result.data.image_url !== undefined ? result.data.image_url : imageUrl,
@@ -104,7 +95,8 @@ const EditEntryModal: React.FC<EditEntryModalProps> = ({ entry, onClose, onSave 
           memory_verse_reference: memoryVerseRef,
           study_bible_reference: studyBibleRef,
           devotional_text: devotionalText,
-          prayer,
+          action_category: actionCategory, // Added
+          action_content: actionContent, // Added
           bible_reading_plan_text: bibleReadingPlan,
         };
         onSave(updatedEntryFromServer);
@@ -177,10 +169,40 @@ const EditEntryModal: React.FC<EditEntryModalProps> = ({ entry, onClose, onSave 
             <label htmlFor={`edit-devotionalText-${entry.id}`} className="block text-sm font-medium text-darkPurple">Devotional Text</label>
             <textarea id={`edit-devotionalText-${entry.id}`} value={devotionalText} onChange={(e) => setDevotionalText(e.target.value)} rows={10} required className="input-field mt-1 block w-full"></textarea>
           </div>
+
+          {/* Action Category Radio Buttons */}
           <div>
-            <label htmlFor={`edit-prayer-${entry.id}`} className="block text-sm font-medium text-darkPurple">Prayer</label>
-            <textarea id={`edit-prayer-${entry.id}`} value={prayer} onChange={(e) => setPrayer(e.target.value)} rows={4} className="input-field mt-1 block w-full"></textarea>
+            <label className="block text-sm font-medium text-darkPurple mb-1">Action Category</label>
+            <div className="flex space-x-2">
+              {['Action Point', 'Prayer', 'Meditation'].map((category) => (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => setActionCategory(category)}
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-colors
+                    ${actionCategory === category
+                      ? 'bg-purple text-white shadow-md'
+                      : 'bg-gray-100 text-gray-700 border border-gray-300 hover:bg-gray-200'
+                    }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
           </div>
+
+          <div>
+            <label htmlFor={`edit-actionContent-${entry.id}`} className="block text-sm font-medium text-darkPurple">{actionCategory} Content</label>
+            <textarea
+              id={`edit-actionContent-${entry.id}`}
+              value={actionContent}
+              onChange={(e) => setActionContent(e.target.value)}
+              rows={4}
+              className="input-field mt-1 block w-full"
+              placeholder={`Enter text for ${actionCategory.toLowerCase()}...`}
+            />
+          </div>
+
           <div>
             <label htmlFor={`edit-bibleReadingPlan-${entry.id}`} className="block text-sm font-medium text-darkPurple">1-Year Bible Reading Plan</label>
             <input type="text" id={`edit-bibleReadingPlan-${entry.id}`} value={bibleReadingPlan} onChange={(e) => setBibleReadingPlan(e.target.value)} className="input-field mt-1 block w-full" />

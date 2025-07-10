@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
 // import { DUMMY_DEVOTIONALS } from '../../data/dummyDevotionals'; // Removed unused import
-
-// import { DUMMY_DEVOTIONALS } from '../../data/dummyDevotionals';
-
 import { DevotionalEntry } from '../../types';
 import CreateEntryModal from '../../components/admin/CreateEntryModal';
 import ViewEntryModal from '../../components/admin/ViewEntryModal';

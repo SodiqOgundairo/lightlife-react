@@ -43,7 +43,7 @@ const DldManagement: React.FC<DldManagementProps> = ({
             <tbody className="bg-white divide-y divide-gray-200">
               {devotionals.map((entry) => (
                 <tr key={entry.id} className="hover:bg-gold-low/10 transition-colors duration-150 ease-in-out">
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{entry.date}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{entry.entry_date}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{entry.title}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                     <button
